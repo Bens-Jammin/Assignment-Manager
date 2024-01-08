@@ -51,51 +51,34 @@ public class Task {
         return weightedGrade;
     }
 
-    public void setStatus(STATUS status){
-        switch (status) {
-            case NOT_STARTED:
-                currentStatus = "Not Started";
-                break;
-            case BASE_STARTED:
-                currentStatus = "Partially Started";
-                break;
-            case LESS_THAN_HALF:
-                currentStatus = "Started";
-                break;
-            case MORE_THAN_HALF:
-                currentStatus = "Mostly Complete";
-                break;
-            case EDITING:
-                currentStatus = "Editing";
-                break;
-            case COMPLETE:
-                currentStatus = "Complete";
-                break;
-            default:
-                break;
-        }
+    public void setStatus(String status){
+        this.currentStatus = status;
+        // switch (status) {
+        //     case NOT_STARTED:
+        //         currentStatus = "Not Started";
+        //         break;
+        //     case BASE_STARTED:
+        //         currentStatus = "Partially Started";
+        //         break;
+        //     case LESS_THAN_HALF:
+        //         currentStatus = "Started";
+        //         break;
+        //     case MORE_THAN_HALF:
+        //         currentStatus = "Mostly Complete";
+        //         break;
+        //     case EDITING:
+        //         currentStatus = "Editing";
+        //         break;
+        //     case COMPLETE:
+        //         currentStatus = "Complete";
+        //         break;
+        //     default:
+        //         break;
+        // }
     }
 
-    public void setPriority(PRIORITY priority){
-        switch (priority) {
-            case NONE:
-                currentPriority = "None";
-                break;
-            case LOW:
-                currentPriority = "Low";
-                break;
-            case MEDIUM:
-                currentPriority = "Medium";
-                break;
-            case HIGH:
-                currentPriority = "High";
-                break;
-            case CRITICAL:
-                currentPriority = "Critical";
-                break;
-            default:
-                break;
-        }
+    public void setPriority(String priority){
+        this.currentPriority = priority;
     }
 
 

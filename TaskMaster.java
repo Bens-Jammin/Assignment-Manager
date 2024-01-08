@@ -57,11 +57,11 @@ public class TaskMaster {
                 status = true;
                 break;
             case 5:
-                task.setStatus((Task.STATUS)newAttribute);
+                task.setStatus((String)newAttribute);
                 status = true;
                 break;
             case 6:
-                task.setPriority((Task.PRIORITY)newAttribute);
+                task.setPriority((String)newAttribute);
                 status = true;
                 break;
             default:
