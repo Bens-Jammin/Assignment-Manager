@@ -50,6 +50,8 @@ public class DataManager {
                 task.setGrade(grade);
                 task.setStatus(status);
                 task.setPriority(priority);
+
+                tasks.addTask(task);
             }
             reader.close();
 

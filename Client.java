@@ -26,20 +26,20 @@ public class Client {
     private static boolean handleUserCommand(String command) {
         boolean status = true;
         switch (command) {
-            case "#help":
-                printCommands();
-            case "#add":
-                addTask();
-            case "#edit":
-                editTask();
-            case "#remove":
-                removeTask();
-            case "#changeStatus":
-                changeTaskStatus();
-            case "#clear":
-                clearTasks();
-            case "#view":
-                viewTasks();
+            // case "#help":
+            //     printCommands();
+            // case "#add":
+            //     addTask();
+            // case "#edit":
+            //     editTask();
+            // case "#remove":
+            //     removeTask();
+            // case "#changeStatus":
+            //     changeTaskStatus();
+            // case "#clear":
+            //     clearTasks();
+            // case "#view":
+            //     viewTasks();
             case "#exit":
                 status = false;
                 break;

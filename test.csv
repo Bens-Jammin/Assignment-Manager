@@ -1,0 +1,10 @@
+type1,name1,01-01-2000,20.0,20.0,done,high
+type2,name2,01-01-2009,19.0,21.0,not done,low
+type3,name3,01-01-2008,18.0,22.0,editing,high
+type4,name4,01-01-2007,17.0,23.0,done,low
+type5,name5,01-01-2006,16.0,24.0,not done,high
+type6,name6,01-01-2005,15.0,25.0,editing,low
+type7,name7,01-01-2004,14.0,26.0,done,high
+type8,name8,01-01-2003,13.0,27.0,not done,low
+type9,name9,01-01-2002,12.0,28.0,editing,high
+type10,name10,01-01-2001,11.0,29.0,done,low

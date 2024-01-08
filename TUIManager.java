@@ -18,7 +18,6 @@ public class TUIManager {
 
 
     public void printTable() {
-        // data[0].length
         int[] maxWidths = calculateMaxWidthsPerColumn( data[0].length );
 
         printSeparatorLine(maxWidths);
@@ -56,7 +55,7 @@ public class TUIManager {
     private int[] calculateMaxWidthsPerColumn(int numberOfColumns){
         int[] maxWidths = new int[numberOfColumns];
 
-        for (int col = 0; col < data[0].length; col++) {
+        for (int col = 0; col < numberOfColumns; col++) {
             for (int row = 0; row < data.length; row++) {
                 maxWidths[col] = Math.max(maxWidths[col], data[row][col].length());
             }
