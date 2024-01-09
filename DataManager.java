@@ -3,6 +3,7 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -31,6 +32,13 @@ public class DataManager {
         }
     }
 
+
+    /**
+     * creates a TaskMaster instance given the tasks listed in a CSV file. CSV must contain the following pattern:
+     * <p>type, name, date (dd-mm-yyyy), weight, grade, status, priority</p>
+     * @param filepath - path of the CSV file
+     * @return instance of TaskMaster filled with tasks in filepath
+     */
     public static TaskMaster convertCSVToTasks(String filepath){
         TaskMaster tasks = new TaskMaster();
         try{
@@ -40,7 +48,12 @@ public class DataManager {
                 String[] values = line.split(",");
                 String type = values[0];
                 String name = values[1];
-                Date date = new SimpleDateFormat("dd-mm-yyyy").parse(values[2]);
+                Date date;
+                try{
+                    date = new SimpleDateFormat("dd-mm-yyyy").parse(values[2]);
+                }catch(ParseException p){
+                    date = null; 
+                }
                 float weight = Float.valueOf(values[3]);
                 float grade = Float.valueOf(values[4]);
                 String status = values[5];

@@ -82,13 +82,13 @@ public class TaskMaster {
         int row = 0;
         for (Task t : tasks) {
             String[] rowData = {
-                    t.getPriority(),
-                    t.getName(),
                     t.getType(),
-                    Integer.toString(t.getDaysUntilDue()),
-                    Float.toString(t.getWeight()),
-                    Float.toString(t.getGrade()) + "%",
-                    Float.toString(t.getWeight())
+                    t.getName(),
+                    t.getPriority(),
+                    t.getDueDate().toString(),
+                    Float.toString( t.getWeight() ),
+                    Float.toString( t.getGrade() ) + "%",
+                    Float.toString( t.getWeightedGrade() )
             };
             matrix[row] = rowData;
             row++;

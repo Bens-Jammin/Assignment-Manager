@@ -51,37 +51,8 @@ public class Task {
         return weightedGrade;
     }
 
-    public void setStatus(String status){
-        this.currentStatus = status;
-        // switch (status) {
-        //     case NOT_STARTED:
-        //         currentStatus = "Not Started";
-        //         break;
-        //     case BASE_STARTED:
-        //         currentStatus = "Partially Started";
-        //         break;
-        //     case LESS_THAN_HALF:
-        //         currentStatus = "Started";
-        //         break;
-        //     case MORE_THAN_HALF:
-        //         currentStatus = "Mostly Complete";
-        //         break;
-        //     case EDITING:
-        //         currentStatus = "Editing";
-        //         break;
-        //     case COMPLETE:
-        //         currentStatus = "Complete";
-        //         break;
-        //     default:
-        //         break;
-        // }
-    }
-
-    public void setPriority(String priority){
-        this.currentPriority = priority;
-    }
-
-
+    public void setStatus(String status){ this.currentStatus = status; }
+    public void setPriority(String priority){ this.currentPriority = priority; }
     public void setType(String type){this.type = type;}
     public void setName(String name){this.name = name;}
     public void setDueDate(Date date){this.dueDate = date;}
@@ -91,14 +62,24 @@ public class Task {
 
     public String getType(){ return type; }
     public String getName(){ return name; }
-    public String getDueDate(){ return dueDate.toString(); }
+    public String getDueDate(){ 
+        if ( dueDate == null ) {
+            return "Not Available Yet";
+        }
+        String[] dateinfo = dueDate.toString().split(" ");
+        String date = dateinfo[0] + ", " + dateinfo[1] + " " + dateinfo[2] + ", " + dateinfo[5];
+        return date; 
+    }
     public String getStatus(){ return currentStatus; }
     public String getPriority(){ return currentPriority;}
     public float getWeight(){ return weight; }
-    public float getWeightedGrade(){ return weightedGrade; }
+    public float getWeightedGrade(){ return calculateWeightedGrade(); }
     public float getGrade(){ return grade; }
 
     public int getDaysUntilDue(){
+        if( dueDate == null ){
+            return 999;
+        }
         ZonedDateTime currentDate = ZonedDateTime.now();
         ZonedDateTime targetDate = dueDate.toInstant().atZone(currentDate.getZone());
 

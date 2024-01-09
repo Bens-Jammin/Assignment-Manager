@@ -1,11 +1,12 @@
+
 public class testing {
     
 
     public static void main(String[] args) {
-        TaskMaster t = DataManager.convertCSVToTasks("test.csv ");
-        String[][] matrix = t.convertToStringMatrix();
-        System.out.println(matrix.length + " " + matrix[0].length );
-        TUIManager tui = new TUIManager( matrix );
-        tui.printTable();
+        TaskMaster t = DataManager.convertCSVToTasks("Ben.csv ");
+        
+        TUIManager tui = new TUIManager( t );
+        tui.displayTable();
+        // TODO: sorting doesnt work for some reason
     }
 }
