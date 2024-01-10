@@ -271,4 +271,8 @@ public class TUIManager {
 
         return false;
     }
+
+
+    public void blackList(){}
+    public void whiteList(){}
 }
