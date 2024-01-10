@@ -1,11 +1,20 @@
 import java.util.PriorityQueue;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.Locale;
 
 
 public class TUIManager {
     private String[][] data;
     private TaskMaster tasks;
     private PriorityQueue<Task> sortedTasks;
+    private ArrayList<Task> blackList;
 
     private static final String RESET = "\u001B[0m"; 
     private static final String RED = "\u001B[31m";
@@ -20,6 +29,8 @@ public class TUIManager {
     private static final String BLACK_BACKGROUND = "\u001B[48;5;235m";
     private static final String WHITE_BACKGROUND = "\u001B[48;5;233m";
 
+    private static final String ITALICS = "\033[3m";
+
     enum SORTBY{
         TYPE,
         NAME,
@@ -31,15 +42,15 @@ public class TUIManager {
     }
 
     // Can change columns in TaskMaster -> convertToMatrix()
-    private String[] headerLabels = {
-            "PRIORITY",
-            "NAME",
-            "TYPE",
-            "DUE DATE",
-            "WEIGHT",
-            "GRADE",
-            "WEIGHTED GRADE"
-        };
+    private static final String[] headerLabels = {
+        "PRIORITY",
+        "NAME",
+        "TYPE",
+        "DUE DATE",
+        "WEIGHT",
+        "GRADE",
+        "WEIGHTED GRADE"
+    };
 
     
     public TUIManager(TaskMaster tasks) {
@@ -99,6 +110,8 @@ public class TUIManager {
 
         // print the other rows
         for (int row = 0; row < data.length; row++) {
+            if( isBlackListed( data[row] ) ) continue;
+
             printData( maxWidths, data[row], false, row+1 );
             System.out.println();
         }
@@ -128,7 +141,10 @@ public class TUIManager {
                 
                 System.out.print(formattedText);
                 continue;
+
             }
+
+
             // only prints the left bar if its the  first column
             String out = String.format( "%-" + maxWidths[col] + "s ", writtenData );
 
@@ -150,33 +166,38 @@ public class TUIManager {
         String textColour = "";
 
         switch ( columnNumber ) {
-            case 0:
+            case 0: // course
                 String className = text.trim().replace(" ", "");
                 if( className.equals("CSI2132")) textColour = RED;
                 else if( className.equals("MAT2377")) textColour = BLUE;
                 else if( className.equals("CSI2120") ) textColour = GREEN;
                 else if( className.equals("CSI2101") ) textColour = YELLOW;
                 else if( className.equals("CSI2911") ) textColour = ORANGE;
+                break;
+            case 1: // assignment name
 
                 break;
-            case 1:
-
-                break;
-            case 2:
+            case 2: // priority
                 String status = text.trim().replace(" ", "");
                 if( status.equals("Critical") ) textColour = BOLD_RED;
                 else if( status.equals("High") ) textColour = ORANGE;
                 else if( status.equals("Medium") ) textColour = YELLOW;
                 else if( status.equals("Low") ) textColour = GREEN;
                 break;
-            case 3:
+            case 3: // date
                 String date = text.replace("|", "");
-                if( date.equals("Not Available Yet") ) textColour = RED;
+                if( date.equals("Not Available Yet") ) textColour = ITALICS;
+                else
+                    try {
+                        textColour = colourBasedOnDaysLeft(text);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
                 break;
-            case 4:
+            case 4: // weight
 
                 break;
-            case 5:
+            case 5: // grade
                 float mark = Float.valueOf( text.replace("%", "") );
                 
                 if( mark > 85 ) textColour = GREEN;
@@ -191,6 +212,25 @@ public class TUIManager {
         return textColour;
     }
 
+
+    private String colourBasedOnDaysLeft(String text) throws ParseException{
+
+        SimpleDateFormat formatter = new SimpleDateFormat("E, MMM d, yyyy", Locale.ENGLISH);
+        Date date = formatter.parse( text );
+        ZonedDateTime currentDate = ZonedDateTime.now();
+        ZonedDateTime targetDate = date.toInstant().atZone(currentDate.getZone());
+
+        LocalDate currentLocalDate = currentDate.toLocalDate();
+        LocalDate targetLocalDate = targetDate.toLocalDate();
+        int daysBetween =(int) ChronoUnit.DAYS.between(currentLocalDate, targetLocalDate);
+
+        String color = "";
+        if ( daysBetween < 2 ) color = RED;
+        else if ( daysBetween < 5 ) color = ORANGE;
+        else if ( daysBetween < 7 ) color = YELLOW;
+        
+        return color;
+    }
 
 
     private int[] calculateMaxWidthsPerColumn(int numberOfColumns){
@@ -222,5 +262,19 @@ public class TUIManager {
             data[row] = rowData;
             row++;
         }
-    } 
+    }
+
+
+    public boolean isBlackListed( String[] data ){
+        String courseCode = data[0];
+        String assignmentName = data[1];
+
+        for ( Task t : blackList ){
+            if( t.getType().equals(courseCode) && t.getName().equals(assignmentName) ){
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
