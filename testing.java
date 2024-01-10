@@ -1,5 +1,4 @@
 
-
 public class testing {
     
 
@@ -7,8 +6,8 @@ public class testing {
         TaskMaster t = DataManager.convertCSVToTasks("Ben.csv ");
         
         TUIManager tui = new TUIManager( t );
-        tui.sortTable(TUIManager.SORTBY.DATE);
+    
+        tui.FilterTable(TUIManager.SORTBY.DATE);
         tui.displayTable();
-        // TODO: sorting doesnt work for some reason
-    }
+        }
 }

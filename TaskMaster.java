@@ -5,10 +5,14 @@ public class TaskMaster {
 
     ArrayList<String> taskTypes;
     ArrayList<Task> tasks;
+    float CGPA;    
+    ArrayList<Float> classGPAs;
 
     public TaskMaster() {
         taskTypes = new ArrayList<>();
         tasks = new ArrayList<>();
+        CGPA = 0;
+        classGPAs = new ArrayList<>();
     }
 
     public void addTask(Task task) {

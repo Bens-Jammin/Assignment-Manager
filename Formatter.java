@@ -13,6 +13,7 @@ public class Formatter {
             t.getName(),
             t.getPriority(),
             t.getDueDate().toString(),
+            t.getStatus(),
             Float.toString( t.getWeight() ),
             Float.toString( t.getGrade() ) + "%",
             Float.toString( t.getWeightedGrade() )

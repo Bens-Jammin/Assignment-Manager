@@ -1,19 +1,13 @@
-import java.util.PriorityQueue;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.Date;
 
 
 
 public class TUIManager {
-    private String[][] data;
-    private TaskMaster tasks;
-    private PriorityQueue<Task> sortedTasks;
-    private ArrayList<Task> blackList;
+    private Table table;
 
     private static final String RESET = "\u001B[0m"; 
     private static final String RED = "\u001B[31m";
@@ -24,11 +18,26 @@ public class TUIManager {
     private static final String ORANGE = "\u001B[38;5;130m";
 
     private static final String BOLD_RED = "\033[1;31m";
+    private static final String BOLD_MAGENTA = "\033[35;1m";
+    private static final String BOLD_CYAN = "\033[36;1m";
+    private static final String BOLD_GREEN = "\033[32;1m";
 
     private static final String BLACK_BACKGROUND = "\u001B[48;5;235m";
     private static final String WHITE_BACKGROUND = "\u001B[48;5;233m";
 
     private static final String ITALICS = "\033[3m";
+
+    // Can change columns in Formatter Class
+    private static final String[] headerLabels = {
+        "PRIORITY",
+        "NAME",
+        "TYPE",
+        "DUE DATE",
+        "STATUS",
+        "WEIGHT",
+        "GRADE",
+        "WEIGHTED GRADE"
+    };
 
     enum SORTBY{
         TYPE,
@@ -40,66 +49,17 @@ public class TUIManager {
         PRIORITY
     }
 
-    // Can change columns in Formatter Class
-    private static final String[] headerLabels = {
-        "PRIORITY",
-        "NAME",
-        "TYPE",
-        "DUE DATE",
-        "WEIGHT",
-        "GRADE",
-        "WEIGHTED GRADE"
-    };
-
     
     public TUIManager(TaskMaster tasks) {
-        this.tasks = tasks;
-        this.data = tasks.convertToStringMatrix();
-        sortedTasks = new PriorityQueue<>();
-        blackList = new ArrayList<>();
-    }
-
-   public void sortTable(SORTBY sortBy) {
-        Comparator<Task> comparator;
-        switch (sortBy) {
-            case TYPE:
-                comparator = (t1, t2) -> Comparator.comparing(Task::getType).compare(t1, t2);
-                break;
-            case NAME:
-                comparator = (t1, t2) -> Comparator.comparing(Task::getName).compare(t1, t2);
-                break;
-            case DATE:
-                comparator = (t1, t2) -> Comparator.comparing(Task::getDueDate).compare(t1, t2);
-                break;
-            case GRADE:
-                comparator = (t1, t2) -> Comparator.comparing(Task::getGrade).compare(t1, t2);
-                break;
-            case WEIGHT:
-                comparator = (t1, t2) -> Comparator.comparing(Task::getWeight).compare(t1, t2);
-                break;
-            case STATUS:
-                comparator = (t1, t2) -> Comparator.comparing(Task::getStatus).compare(t1, t2);
-                break;
-            case PRIORITY:
-                comparator = (t1, t2) -> Comparator.comparing(Task::getPriority).compare(t1, t2);
-                break;
-            default:
-                throw new IllegalArgumentException("Invalid sort option");
-       }
-
-       sortedTasks = new PriorityQueue<>(comparator);
-
-       for( Task t : tasks.getAllTasks() ){
-        sortedTasks.add(t);
-       }
-
-       updateMatrix();
+        this.table = new Table( tasks.convertToStringMatrix(), tasks );
     }
 
 
     public void displayTable() {
+
+        table.refreshTable();
         
-        int[] maxWidths = calculateMaxWidthsPerColumn( data[0].length );
+        int[] maxWidths = calculateMaxWidthsPerColumn( table.getRow(0).length );
 
         printSeparatorLine(maxWidths);
 
@@ -110,15 +70,19 @@ public class TUIManager {
         printSeparatorLine(maxWidths);
 
         // print the other rows
-        for (int row = 0; row < data.length; row++) {
-            if( isBlackListed( data[row] ) ) continue;
+        for (int row = 0; row < table.getNumberOfRows(); row++) {
+            if( table.isBlackListed( table.getRow(row) ) ) continue;
 
-            printData( maxWidths, data[row], false, row+1 );
+            printData( maxWidths, table.getRow(row), false, row+1 );
             System.out.println();
         }
         printSeparatorLine(maxWidths);
     }
 
+    
+    /*****************************
+     *  TABLE PRINTING METHODS 
+     ****************************/
 
     private void printSeparatorLine(int[] maxWidths){
         System.out.print("+");
@@ -160,6 +124,9 @@ public class TUIManager {
         }
     }
 
+    /*****************************
+     *  CELL COLOURING METHODS 
+     ****************************/
 
     private String calculateTextColour(String text, int columnNumber ){
         String textColour = "";
@@ -167,6 +134,7 @@ public class TUIManager {
         switch ( columnNumber ) {
             case 0: // course
                 String className = text.trim().replace(" ", "");
+
                      if( className.equals("CSI2132") ) textColour = RED;
                 else if( className.equals("MAT2377") ) textColour = BLUE;
                 else if( className.equals("CSI2120") ) textColour = GREEN;
@@ -174,29 +142,41 @@ public class TUIManager {
                 else if( className.equals("CSI2911") ) textColour = ORANGE;
                 break;
             case 1: // assignment name
+                String assignmentName = text.trim().replace(" ", "");
 
+                     if( assignmentName.equals("Midterm") ) textColour = BOLD_MAGENTA;
+                else if( assignmentName.equals("Final")   ) textColour = BOLD_CYAN;
                 break;
             case 2: // priority
-                String status = text.trim().replace(" ", "");
-                     if( status.equals("Critical") ) textColour = BOLD_RED;
-                else if( status.equals("High") ) textColour = ORANGE;
-                else if( status.equals("Medium") ) textColour = YELLOW;
-                else if( status.equals("Low") ) textColour = GREEN;
+                String priority = text.trim().replace(" ", "");
+
+                     if( priority.equals("Critical") ) textColour = BOLD_RED;
+                else if( priority.equals("High")     ) textColour = ORANGE;
+                else if( priority.equals("Medium")   ) textColour = YELLOW;
+                else if( priority.equals("Low")      ) textColour = GREEN;
                 break;
             case 3: // date
                 String date = text.replace("|", "");
                 if( date.equals("Not Available Yet") ) textColour = ITALICS;
                 else
                     try {
-                        textColour = colourBasedOnDaysLeft(text);
+                        textColour = colourCellBasedOnDaysLeft(text);
                     } catch (ParseException e) {
                         e.printStackTrace();
                     }
                 break;
-            case 4: // weight
+            case 4: // status
+                    String status = text.strip().replace(" ", "");
+
+                         if( status.equals("NotStarted")       ) textColour = RED;
+                    else if( status.toLowerCase().contains("started") ) textColour = YELLOW;
+                    else if( status.equals("Editing")          ) textColour = BLUE;
+                    else if( status.equals("Complete")         ) textColour = BOLD_GREEN;
+                break;
+            case 5: // weight
 
                 break;
-            case 5: // grade
+            case 6: // grade
                 float mark = Float.valueOf( text.replace("%", "") );
                 
                      if( mark > 85 ) textColour = GREEN;
@@ -212,7 +192,7 @@ public class TUIManager {
     }
 
 
-    private String colourBasedOnDaysLeft(String text) throws ParseException{
+    private String colourCellBasedOnDaysLeft(String text) throws ParseException{
 
         Date date = Formatter.formatDateWithWeekDayNames( text );
 
@@ -230,15 +210,18 @@ public class TUIManager {
         else if ( daysBetween < 7 ) color = YELLOW;
         
         return color;
-    }
+    }    
 
-
+    /*****************************
+     *  MISC METHODS 
+     ****************************/
+    
     private int[] calculateMaxWidthsPerColumn(int numberOfColumns){
         int[] maxWidths = new int[numberOfColumns];
 
         for (int col = 0; col < numberOfColumns; col++) {
-            for (int row = 0; row < data.length; row++) {
-                maxWidths[col] = Math.max( maxWidths[col], data[row][col].length() );
+            for (int row = 0; row < table.getNumberOfRows(); row++) {
+                maxWidths[col] = Math.max( maxWidths[col], table.getCell(row, col).length() );
             }
             maxWidths[col] = Math.max( maxWidths[col], headerLabels[col].length() );
         }
@@ -246,33 +229,6 @@ public class TUIManager {
         return maxWidths;
     }
 
+    public void FilterTable(SORTBY sortBy){ table.sortTable( sortBy ); }
 
-    private void updateMatrix(){
-        int row = 0;
-        for (Task t : sortedTasks) {
-            String[] rowData = Formatter.formatRow( t );
-            data[row] = rowData;
-            row++;
-        }
-    }
-
-
-    public boolean isBlackListed( String[] data ){
-        String courseCode = data[0];
-        String assignmentName = data[1];
-
-        if( blackList.isEmpty() ) return false;
-
-        for ( Task t : blackList ){
-            if( t.getType().equals( courseCode ) && t.getName().equals( assignmentName ) ){
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-
-    public void blackList(){}
-    public void whiteList(){}
 }
