@@ -3,8 +3,6 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -48,12 +46,9 @@ public class DataManager {
                 String[] values = line.split(",");
                 String type = values[0];
                 String name = values[1];
-                Date date;
-                try{
-                    date = new SimpleDateFormat("dd-mm-yyyy").parse(values[2]);
-                }catch(ParseException p){
-                    date = null; 
-                }
+                
+                Date date = Formatter.formatDate( values[2] );
+                
                 float weight = Float.valueOf(values[3]);
                 float grade = Float.valueOf(values[4]);
                 String status = values[5];

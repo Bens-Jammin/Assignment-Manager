@@ -81,15 +81,7 @@ public class TaskMaster {
 
         int row = 0;
         for (Task t : tasks) {
-            String[] rowData = {
-                    t.getType(),
-                    t.getName(),
-                    t.getPriority(),
-                    t.getDueDate().toString(),
-                    Float.toString( t.getWeight() ),
-                    Float.toString( t.getGrade() ) + "%",
-                    Float.toString( t.getWeightedGrade() )
-            };
+            String[] rowData = Formatter.formatRow(t);
             matrix[row] = rowData;
             row++;
         }

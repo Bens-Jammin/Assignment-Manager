@@ -81,7 +81,7 @@ public class Task {
             return 999;
         }
         ZonedDateTime currentDate = ZonedDateTime.now();
-        ZonedDateTime targetDate = dueDate.toInstant().atZone(currentDate.getZone());
+        ZonedDateTime targetDate = dueDate.toInstant().atZone( currentDate.getZone() );
 
         LocalDate currentLocalDate = currentDate.toLocalDate();
         LocalDate targetLocalDate = targetDate.toLocalDate();
