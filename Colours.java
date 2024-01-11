@@ -4,6 +4,7 @@ import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
+
 public class Colours {
     
     private static final String RESET = "\u001B[0m"; 
@@ -104,10 +105,11 @@ public class Colours {
         int daysBetween =(int) ChronoUnit.DAYS.between(currentLocalDate, targetLocalDate);
 
         String color = "";
-             if ( daysBetween < 0 ) color = BLACK;
-        else if ( daysBetween < 2 ) color = RED;
-        else if ( daysBetween < 5 ) color = ORANGE;
-        else if ( daysBetween < 7 ) color = YELLOW;
+             if ( daysBetween < 0  ) color = BLACK;
+        else if ( daysBetween < 2  ) color = RED;
+        else if ( daysBetween < 5  ) color = ORANGE;
+        else if ( daysBetween < 7  ) color = YELLOW;
+        else if ( daysBetween < 15 ) color = GREEN;
         
         return color;
     }

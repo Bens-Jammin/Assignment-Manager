@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Comparator;
 
+
 public class Table {
     
     String[][] data;
@@ -37,7 +38,7 @@ public class Table {
             comparator = new Comparator<Task>() {
                 @Override
                 public int compare(Task a, Task b) {
-                    return a.getType().compareTo(b.getType());
+                    return a.getClassName().compareTo( b.getClassName() );
                 }
             };
             break;
@@ -77,7 +78,7 @@ public class Table {
 
     public boolean isBlackListed( String[] row ){
         for( Task task  : blackList ){
-            boolean isSameClass =  task.getType().equals(row[0]);
+            boolean isSameClass =  task.getClassName().equals(row[0]);
             boolean isSameAssignment = task.getName().equals(row[1]);
             if ( isSameClass && isSameAssignment ) {
                 return true;

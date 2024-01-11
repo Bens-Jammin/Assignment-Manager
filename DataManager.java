@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.util.Date;
 
 
+
 public class DataManager {
     
 
@@ -13,7 +14,7 @@ public class DataManager {
         try (PrintWriter pw = new PrintWriter(new FileOutputStream("data.csv"))) {
     
             for( Task t : tasks.getAllTasks() ){
-                String type = t.getType();
+                String type = t.getClassName();
                 String name = t.getName();
                 String date = t.getDueDate().toString();
                 String weight = Float.toString( t.getWeight() );

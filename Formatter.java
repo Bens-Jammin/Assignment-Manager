@@ -4,12 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 
+
 public class Formatter {
     
 
     public static String[] formatRow(Task t){
         return new String[]{
-            t.getType(),
+            t.getClassName(),
             t.getName(),
             t.getPriority(),
             t.getDueDate().toString(),

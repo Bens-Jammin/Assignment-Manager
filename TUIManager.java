@@ -1,17 +1,7 @@
 public class TUIManager {
     private Table table;
 
-    // Can change columns in Formatter Class
-    private static final String[] headerLabels = {
-        "TYPE",
-        "NAME",
-        "PRIORITY",
-        "DUE DATE",
-        "STATUS",
-        "WEIGHT",
-        "GRADE",
-        "WEIGHTED GRADE"
-    };
+    private String[] headerLabels;
 
     enum SORTBY{
         TYPE,
@@ -24,8 +14,14 @@ public class TUIManager {
     }
 
     
-    public TUIManager(TaskMaster tasks) {
+    public TUIManager(TaskMaster tasks, String[] headerLabels) {
         this.table = new Table( tasks.convertToStringMatrix(), tasks );
+        this.headerLabels = headerLabels;
+    }
+
+    public TUIManager(Table table, String[] headerLabels){
+        this.table = table;
+        this.headerLabels = headerLabels;
     }
 
 
@@ -84,7 +80,7 @@ public class TUIManager {
             String out = String.format( "%-" + maxWidths[col] + "s ", writtenData );
 
             String textColour = Colours.calculateTextColour(data[col], col);
-            String separatorBar = Colours.colourCellBackground( ( (col+1 == data.length) ? "|" : "| " ) , col ); 
+            String separatorBar = Colours.colourCellBackground( ( (col+1 == data.length) ? "|" : "| " ) , count ); 
 
             String formattedText = Colours.colourCell(out, textColour, (col == 0), count) + separatorBar;
             System.out.print( formattedText );
@@ -101,6 +97,7 @@ public class TUIManager {
 
         for (int col = 0; col < numberOfColumns; col++) {
             for (int row = 0; row < table.getNumberOfRows(); row++) {
+                
                 maxWidths[col] = Math.max( maxWidths[col], table.getCell(row, col).length() );
             }
             maxWidths[col] = Math.max( maxWidths[col], headerLabels[col].length() );

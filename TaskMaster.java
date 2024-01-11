@@ -1,23 +1,24 @@
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class TaskMaster {
 
     ArrayList<String> taskTypes;
     ArrayList<Task> tasks;
     float CGPA;    
-    ArrayList<Float> classGPAs;
 
     public TaskMaster() {
         taskTypes = new ArrayList<>();
         tasks = new ArrayList<>();
         CGPA = 0;
-        classGPAs = new ArrayList<>();
     }
 
     public void addTask(Task task) {
-        taskTypes.add(task.getType());
-        tasks.add(task);
+        taskTypes.add( task.getClassName() );
+        tasks.add( task );
     }
 
     /**
@@ -78,6 +79,16 @@ public class TaskMaster {
     public ArrayList<Task> getAllTasks(){
         return tasks;
     }
+
+
+    public Set<String> getClassCodes(){
+        Set<String> classSet = new HashSet<>();
+        for( Task t : tasks ){
+            classSet.add( t.getClassName() );
+        }
+        return classSet;
+    }
+
 
     public String[][] convertToStringMatrix() {
         // matrix has priority, name, type, days to due, weight, grade, weighted grade

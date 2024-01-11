@@ -60,7 +60,7 @@ public class Task {
     public void setGrade(float grade){this.grade = grade;}
 
 
-    public String getType(){ return type; }
+    public String getClassName(){ return type; }
     public String getName(){ return name; }
     public String getDueDate(){ 
         if ( dueDate == null ) {
