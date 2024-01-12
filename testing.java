@@ -14,17 +14,23 @@ public class testing {
             "GRADE",
             "WEIGHTED GRADE"
         };
-    
-        TUIManager tui = new TUIManager( t, headers );
-    
-        tui.FilterTable(TUIManager.SORTBY.DATE);
-        tui.displayTable();
-
         String[] head = {"Course Code", "Grade"};
+    
+        
+        
+        TUIManager tui = new TUIManager( t, headers );
         
         Table gradeTable = new Table( GradeManager.convertGradesToMatrix(t) , t);
         TUIManager tui2 = new TUIManager(gradeTable, head);  // i think i need to abstract TaskMaster and GradeManager
+        
+        Table thisWeeksTable = new Table( WeeklyAssignmentManager.CalculateAssignmentsToWorkOn(t), t );
+        TUIManager tui3 = new TUIManager(thisWeeksTable, new String[]{"To Do This Week"} );
+        
+        
+        tui.FilterTable(TUIManager.SORTBY.DATE);
+        
+        tui.displayTable();
         tui2.displayTable();
-
+        tui3.displayTable();
     }
 }

@@ -154,8 +154,8 @@ public class Colours {
     private static String colourCellBasedOnAssignmentName(String text){
         String textColour = "";
 
-             if( text.equals("Midterm") ) textColour = BOLD_MAGENTA;
-        else if( text.equals("Final")   ) textColour = BOLD_CYAN;
+        if( text.contains("Midterm") ) textColour = BOLD_MAGENTA;
+        if( text.contains("Final")   ) textColour = BOLD_CYAN;
     
         return textColour;
     }

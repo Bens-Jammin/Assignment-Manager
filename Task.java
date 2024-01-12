@@ -1,6 +1,9 @@
+import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.temporal.ChronoUnit;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
 
 public class Task {
@@ -80,8 +83,8 @@ public class Task {
         if( dueDate == null ){
             return 999;
         }
-        ZonedDateTime currentDate = ZonedDateTime.now();
-        ZonedDateTime targetDate = dueDate.toInstant().atZone( currentDate.getZone() );
+        ZonedDateTime currentDate = ZonedDateTime.now( ZoneId.of("UTC") );
+        ZonedDateTime targetDate = dueDate.toInstant().atZone( ZoneId.of("UTC") );
 
         LocalDate currentLocalDate = currentDate.toLocalDate();
         LocalDate targetLocalDate = targetDate.toLocalDate();
@@ -90,4 +93,24 @@ public class Task {
         return (int) daysBetween;
     }
 
+
+    public boolean isDueThisWeek(){
+        if( dueDate == null ){ 
+            return false; 
+        }
+
+        LocalDate currentDate = LocalDate.now();
+
+        // Calculate the start and end of the current week
+        LocalDate startOfWeek = currentDate.with( TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY) );
+        LocalDate endOfWeek = currentDate.with( TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY) );
+
+        // Convert LocalDate to Date
+        Date startOfWeekDate = Date.from( startOfWeek.atStartOfDay( ZoneId.systemDefault() ).toInstant() );
+        Date endOfWeekDate = Date.from( endOfWeek.atStartOfDay( ZoneId.systemDefault() ).toInstant() );
+
+        return !dueDate.before( startOfWeekDate ) && !dueDate.after( endOfWeekDate );
+    }
 }
+
+
