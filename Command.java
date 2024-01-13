@@ -1,3 +1,4 @@
+
 public class Command {
     
     private static String[] TASK_HEADERS = {
@@ -14,7 +15,7 @@ public class Command {
     private static String[] TODO_HEADERS = {"To Do This Week"};
 
 
-    public static void readCommand(String command, TaskMaster tasks){
+    public static boolean readCommand(String command, TaskMaster tasks){
         
         String[] cmdStructure = command.split(" ");
 
@@ -25,6 +26,13 @@ public class Command {
         else if( cmdStructure[0].toLowerCase().equals("show") ){
             showTable( cmdStructure, tasks );
         }
+        else if( cmdStructure[0].toLowerCase().equals("help") ){
+            commandHelp();
+        }
+        else if( cmdStructure[0].toLowerCase().equals("quit") ){
+            return false;
+        }
+        return true;
     }
 
 
@@ -54,6 +62,10 @@ public class Command {
         addSpaceBetweenTable();
 
         Table table = new Table( matrix, tasks );
+        
+        // sort by date if user wants tasks table opened
+        if( command[1].toLowerCase().equals("all")) table.sortTable(TUIManager.SORTBY.DATE);
+        
         TUIManager tui = new TUIManager( table, headers );
         
         
@@ -61,6 +73,21 @@ public class Command {
         tui.displayTable();
     }
 
+
+    private static void commandHelp(){
+        String commandPrefix = " >> ";
+        String[] commands = new String[]{
+            "show <all, grades, todo> --> displays information as a table",
+            "edit <task name> <course code> <attribute to change> <new attribute value> --> allows task editing",
+            "quit --> quits the program"
+        };
+
+        addSpaceBetweenTable();
+        for( String c : commands ){
+            System.out.println( commandPrefix + c );
+        }
+        addSpaceBetweenTable();
+    }
 
     private static void executeEdit(String[] command, TaskMaster tasks){
         String name = command[1];
@@ -103,7 +130,7 @@ public class Command {
     }
 
     private static void addSpaceBetweenTable(){
-        int numberOfNewLines = 2;
+        int numberOfNewLines = 1;
         for( int i=0; i<numberOfNewLines; i++ ){
             System.out.println("");
         }

@@ -6,11 +6,10 @@ public class test {
 
         TaskMaster tm = DataManager.convertCSVToTasks("Ben.csv ");
         
-        int i = 4;
-        while( i > 1 ){
+        boolean running = true;
+        while( running ){
             String input = sc.nextLine();
-            Command.readCommand( input, tm );
-            i--;
+            running = Command.readCommand( input, tm );
         }
         sc.close();
 

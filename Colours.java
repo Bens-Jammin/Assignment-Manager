@@ -8,6 +8,7 @@ import java.util.Date;
 public class Colours {
     
     private static final String RESET = "\u001B[0m"; 
+    
     private static final String RED = "\u001B[31m";
     private static final String GREEN = "\u001B[32m";
     private static final String BLACK = "\u001B[30m";
@@ -86,13 +87,13 @@ public class Colours {
 
         return textColour;
     }
-
-
+    
     
     /******************************************
      *  COLOURING CELLS BASED ON THEIR CONTENT 
      ******************************************/
 
+    
     private static String colourCellBasedOnDaysLeft(String text) throws ParseException{
 
         Date date = Formatter.formatDateWithWeekDayNames( text );
