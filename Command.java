@@ -1,5 +1,18 @@
 public class Command {
     
+    private static String[] TASK_HEADERS = {
+        "TYPE",
+        "NAME",
+        "PRIORITY",
+        "DUE DATE",
+        "STATUS",
+        "WEIGHT",
+        "GRADE",
+        "WEIGHTED GRADE"
+    };
+    private static String[] GRADE_HEADERS = {"Course Code", "Grade"};
+    private static String[] TODO_HEADERS = {"To Do This Week"};
+
 
     public static void readCommand(String command, TaskMaster tasks){
         
@@ -17,23 +30,34 @@ public class Command {
 
     private static void showTable(String[] command, TaskMaster tasks) {
         String[][] matrix = null;
+        String[] headers = null;
 
         switch( command[1].toLowerCase() ){
             case "all":
                 matrix = tasks.convertToStringMatrix();
-            case "todo":
+                headers = TASK_HEADERS;
+                break;
+            case "grades":
                 matrix = GradeManager.convertGradesToMatrix(tasks);
-            case "gpa":
+                headers = GRADE_HEADERS;
+                break;
+            case "todo":
                 matrix = WeeklyAssignmentManager.CalculateAssignmentsToWorkOn(tasks);
+                headers = TODO_HEADERS;
+                break;
         }
         if( matrix == null ){
             System.out.println("Command error, must be 'show <all, todo, gpa>'.");
             return;
         }
 
+        addSpaceBetweenTable();
+
         Table table = new Table( matrix, tasks );
-        TUIManager tui = new TUIManager( table, command );
+        TUIManager tui = new TUIManager( table, headers );
         
+        
+
         tui.displayTable();
     }
 
@@ -77,4 +101,11 @@ public class Command {
         System.out.println("edit <task name> <course code> <attribute to change> <new attribute>");
 
     }
+
+    private static void addSpaceBetweenTable(){
+        int numberOfNewLines = 2;
+        for( int i=0; i<numberOfNewLines; i++ ){
+            System.out.println("");
+        }
+    } 
 }
