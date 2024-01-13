@@ -16,7 +16,7 @@ public class DataManager {
             for( Task t : tasks.getAllTasks() ){
                 String type = t.getClassName();
                 String name = t.getName();
-                String date = t.getDueDate().toString();
+                String date = t.getDueDateString();
                 String weight = Float.toString( t.getWeight() );
                 String grade = Float.toString( t.getGrade() );
                 String status = t.getStatus();

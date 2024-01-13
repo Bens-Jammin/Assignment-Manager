@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,7 +13,7 @@ public class Formatter {
             t.getClassName(),
             t.getName(),
             t.getPriority(),
-            t.getDueDate().toString(),
+            t.getDueDateString(),
             t.getStatus(),
             Float.toString( t.getWeight() ),
             Float.toString( t.getGrade() ) + "%",

@@ -8,12 +8,10 @@ public class TaskMaster {
 
     ArrayList<String> taskTypes;
     ArrayList<Task> tasks;
-    float CGPA;    
 
     public TaskMaster() {
         taskTypes = new ArrayList<>();
         tasks = new ArrayList<>();
-        CGPA = 0;
     }
 
     public void addTask(Task task) {
@@ -75,6 +73,15 @@ public class TaskMaster {
         return status;
     }
 
+
+    public Task getTask(String taskName, String courseCode){
+        for( Task t : getAllTasks() ){
+            if( taskName.equals(t.getName()) && courseCode.equals(t.getClassName()) ){
+                return t;
+            }
+        }
+        return null;
+    }
 
     public ArrayList<Task> getAllTasks(){
         return tasks;

@@ -65,7 +65,7 @@ public class Task {
 
     public String getClassName(){ return type; }
     public String getName(){ return name; }
-    public String getDueDate(){ 
+    public String getDueDateString(){ 
         if ( dueDate == null ) {
             return "Not Available Yet";
         }
@@ -73,6 +73,7 @@ public class Task {
         String date = dateinfo[0] + ", " + dateinfo[1] + " " + dateinfo[2] + ", " + dateinfo[5];
         return date; 
     }
+    public Date getDate(){ return dueDate; }
     public String getStatus(){ return currentStatus; }
     public String getPriority(){ return currentPriority;}
     public float getWeight(){ return weight; }

@@ -3,6 +3,8 @@ public class TUIManager {
 
     private String[] headerLabels;
 
+    private boolean colourText;
+
     enum SORTBY{
         TYPE,
         NAME,
@@ -17,11 +19,13 @@ public class TUIManager {
     public TUIManager(TaskMaster tasks, String[] headerLabels) {
         this.table = new Table( tasks.convertToStringMatrix(), tasks );
         this.headerLabels = headerLabels;
+        colourText = true;
     }
 
     public TUIManager(Table table, String[] headerLabels){
         this.table = table;
         this.headerLabels = headerLabels;
+        colourText = true;
     }
 
 
@@ -72,17 +76,24 @@ public class TUIManager {
                 // only prints the left bar if its the  first column, adds spacing if its NOT the last cell in the row
                 String text = ( (col == 0) ? "| " : "" )+String.format("%" + maxWidths[col] + "s "+( (col+1 == data.length) ? "|" : "| " ), writtenData);
                 
-                System.out.print( Colours.colourCellBackground(text, 0) );
+                System.out.print( text );
                 continue;
             }
 
             // only prints the left bar if its the  first column
             String out = String.format( "%-" + maxWidths[col] + "s ", writtenData );
 
+            String formattedText;
+            if( !colourText ){  
+                formattedText = ( (col == 0) ? "| " : "" ) + out + ( (col+1 == data.length) ? "|" : "| " );
+                System.out.print( formattedText );
+                continue;
+            }
+            
             String textColour = Colours.calculateTextColour(data[col], col);
             String separatorBar = Colours.colourCellBackground( ( (col+1 == data.length) ? "|" : "| " ) , count ); 
 
-            String formattedText = Colours.colourCell(out, textColour, (col == 0), count) + separatorBar;
+            formattedText = Colours.colourCell(out, textColour, (col == 0), count) + separatorBar;
             System.out.print( formattedText );
         }
     }
@@ -108,4 +119,7 @@ public class TUIManager {
 
     public void FilterTable(SORTBY sortBy){ table.sortTable( sortBy ); }
 
+    public void setColourOptions(boolean setColour){
+        colourText = setColour;
+    }
 }

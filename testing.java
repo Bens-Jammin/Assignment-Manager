@@ -26,7 +26,6 @@ public class testing {
         Table thisWeeksTable = new Table( WeeklyAssignmentManager.CalculateAssignmentsToWorkOn(t), t );
         TUIManager tui3 = new TUIManager(thisWeeksTable, new String[]{"To Do This Week"} );
         
-        
         tui.FilterTable(TUIManager.SORTBY.DATE);
         
         tui.displayTable();

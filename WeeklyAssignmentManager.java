@@ -20,6 +20,7 @@ class WeeklyAssignmentManager{
         ArrayList<String> tasksToDo = new ArrayList<>();
 
         for( Task t : tasks.getAllTasks() ){
+            
             String priority = t.getPriority();
             int daysUntilDue = t.getDaysUntilDue();
             
@@ -28,10 +29,7 @@ class WeeklyAssignmentManager{
             boolean isMediumpriority = ( priority.equals("Medium") );
             boolean isHighPriority =   ( priority.equals("High") || priority.equals("Critical") );
 
-            /*
-             * TODO: 
-             * abstract colouring again, make it an option ( parameter ? )
-             */
+            
             boolean fitsLowPriorityCriteria =  ( isLowPriority    && t.isDueThisWeek() );
             boolean fitsMedPriorityCriteria =  ( isMediumpriority && daysUntilDue < 8  );
             boolean fitsHighPriorityCriteria = ( isHighPriority   && daysUntilDue < 15 );
@@ -51,7 +49,7 @@ class WeeklyAssignmentManager{
 
 
         if( matrix.length == 0 ){
-            return new String[][]{ {"No Assignments to do this week!"} };
+            return new String[][]{ {"Nothing to do this week!"} };
         }
 
         return matrix;
