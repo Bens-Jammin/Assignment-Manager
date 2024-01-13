@@ -14,26 +14,20 @@ public class Command {
     private static String[] GRADE_HEADERS = {"Course Code", "Grade"};
     private static String[] TODO_HEADERS = {"To Do This Week"};
 
+    
 
     public static boolean readCommand(String command, TaskMaster tasks){
         
         String[] cmdStructure = command.split(" ");
 
-        if( cmdStructure[0].toLowerCase().equals("edit") ){
-            executeEdit(cmdStructure, tasks);
-        }
-
-        else if( cmdStructure[0].toLowerCase().equals("show") ){
-            showTable( cmdStructure, tasks );
-        }
-        else if( cmdStructure[0].toLowerCase().equals("help") ){
-            commandHelp();
-        }
-        else if( cmdStructure[0].toLowerCase().equals("quit") ){
-            return false;
-        }
+             if( cmdStructure[0].toLowerCase().equals("edit") ) executeEdit( cmdStructure, tasks );
+        else if( cmdStructure[0].toLowerCase().equals("show") ) showTable( cmdStructure, tasks );
+        else if( cmdStructure[0].toLowerCase().equals("help") ) commandHelp();
+        else if( cmdStructure[0].toLowerCase().equals("quit") ) return false;
+        
         return true;
     }
+
 
 
     private static void showTable(String[] command, TaskMaster tasks) {
@@ -74,6 +68,7 @@ public class Command {
     }
 
 
+
     private static void commandHelp(){
         String commandPrefix = " >> ";
         String[] commands = new String[]{
@@ -88,6 +83,8 @@ public class Command {
         }
         addSpaceBetweenTable();
     }
+
+
 
     private static void executeEdit(String[] command, TaskMaster tasks){
         String name = command[1];
@@ -128,6 +125,8 @@ public class Command {
         System.out.println("edit <task name> <course code> <attribute to change> <new attribute>");
 
     }
+
+
 
     private static void addSpaceBetweenTable(){
         int numberOfNewLines = 1;

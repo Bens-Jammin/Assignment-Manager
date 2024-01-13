@@ -50,6 +50,7 @@ public class GradeManager{
     }
 
 
+    
     public static float calculateSemesterGPA(TaskMaster tasks){
         float gpa = 0;
 
@@ -74,6 +75,7 @@ public class GradeManager{
         return gpa;
     }
 
+
     
     public static float calculateClassGrade(TaskMaster tasks, String className){
         float grade = 0;
@@ -90,6 +92,8 @@ public class GradeManager{
 
         return grade;
     }
+
+
 
     public static String[][] convertGradesToMatrix(TaskMaster taskMaster){
 
