@@ -10,8 +10,8 @@ import java.util.Date;
 public class DataManager {
     
 
-    public static void convertToCSV(TaskMaster tasks){
-        try (PrintWriter pw = new PrintWriter(new FileOutputStream("data.csv"))) {
+    public static void convertToCSV(TaskMaster tasks, String filename){
+        try (PrintWriter pw = new PrintWriter( new FileOutputStream(filename) ) ) {
     
             for( Task t : tasks.getAllTasks() ){
                 String type = t.getClassName();

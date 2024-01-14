@@ -20,11 +20,12 @@ public class Command {
         
         String[] cmdStructure = command.split(" ");
 
-             if( cmdStructure[0].toLowerCase().equals("edit") ) executeEdit( cmdStructure, tasks );
+             if( cmdStructure[0].toLowerCase().equals("edit") ) executeEdit( cmdStructure, tasks ); 
         else if( cmdStructure[0].toLowerCase().equals("show") ) showTable( cmdStructure, tasks );
         else if( cmdStructure[0].toLowerCase().equals("help") ) commandHelp();
         else if( cmdStructure[0].toLowerCase().equals("quit") ) return false;
         
+        DataManager.convertToCSV(tasks, "Ben.csv");
         return true;
     }
 
