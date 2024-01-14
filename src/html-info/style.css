@@ -1,0 +1,28 @@
+
+/* https://www.youtube.com/watch?v=phWxA89Dy94 */ 
+.tables-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;  /* ? why isnt this working */
+} 
+
+.minor-table-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 50%;
+}
+
+.assignment-table-container{
+    background-color: blue;
+    width: 50%;
+}
+.grade-table-container{
+    background-color: aqua;
+    
+}
+
+
+.todo-table-container{
+    background-color: blueviolet;
+}

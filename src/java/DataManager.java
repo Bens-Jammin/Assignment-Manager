@@ -14,6 +14,7 @@ public class DataManager {
         try (PrintWriter pw = new PrintWriter( new FileOutputStream(filename) ) ) {
     
             for( Task t : tasks.getAllTasks() ){
+                
                 String type = t.getClassName();
                 String name = t.getName();
                 String date = t.getDueDateString();
