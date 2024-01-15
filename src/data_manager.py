@@ -30,8 +30,8 @@ def convert_csv_to_matrix(file_path: str) -> list[list[str]]:
                 index += 1
 
         sorted_table = sort_matrix_by_date( task_data )
-
         return sorted_table
+    
     except Exception as e:
         print(e)
 
@@ -39,7 +39,7 @@ def convert_csv_to_matrix(file_path: str) -> list[list[str]]:
 
 def convert_matrix_to_html_table( table: list[list[str]] ) -> str:
     
-    html_table = "<table border=2, class='assignment-table'>"
+    html_table = "<table class='assignment-table'>"
 
     is_first_row = True
 
@@ -47,8 +47,8 @@ def convert_matrix_to_html_table( table: list[list[str]] ) -> str:
         cell_starter = "<td>"
         cell_ender = "</td>"
         if is_first_row:
-            row_starter = "<th>"
-            row_ender = "</th>"
+            cell_starter = "<th style='text-align: center'>"
+            cell_ender = "</th>"
             is_first_row = False
         
         # append all data from matrix to code
@@ -67,16 +67,16 @@ def sort_matrix_by_date( matrix: list[list[str]] ) -> list[list[str]]:
     def date_key(row):
         date_str = row[2]
         if date_str == 'N/A':
-            return datetime.max
+            return datetime.datetime(datetime.MAXYEAR,1,1)
         else:
-            return datetime.strptime(date_str, "%d-%m-%Y")
+            day, month, year = date_str.split("-")
+            return datetime.datetime(int(year), int(month), int(day))
 
     # Sort the matrix by date using the defined key function
-    sorted_matrix = sorted(matrix[1:], key=date_key() )
+    headers = [ matrix[0] ]
+
+
+    sorted_matrix = sorted( matrix[1:], key=date_key )
 
     # Reattach the header row
-    return [matrix[0]] + sorted_matrix
-
-
-for row in convert_csv_to_matrix( "Ben.csv" ):
-    print(row)
+    return headers + sorted_matrix

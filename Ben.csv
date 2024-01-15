@@ -1,41 +1,41 @@
-CSI 2132,Midterm,13-02-2024,10,0,Not Started,High
-CSI 2132,Deliverable 1,16-02-2024,12.5,0,Not Started,Medium
-CSI 2132,Deliverable 2,31-03-2024,12.5,0,Not Started,Medium
-CSI 2132,Assignment 1,21-02-2024,5,0,Not Started,Medium
-CSI 2132,Assignment 2,25-03-2024,5,0,Not Started,Medium
-CSI 2132,Assignment 3,07-04-2024,5,0,Not Started,Medium
-CSI 2132,Final,N/A,50,0,Not Started,Critical
-MAT 2377,Midterm,51-02-2024,25,0,Not Started,Critical
-MAT 2377,Assignment 1,21-01-2024,5,0,Not Started,Medium
-MAT 2377,Assignment 2,11-02-2024,5,0,Not Started,Medium
-MAT 2377,Assignment 3,10-03-2024,5,0,Not Started,Medium
-MAT 2377,Assignment 4,31-03-2024,5,0,Not Started,Medium
-MAT 2377,Final,N/A,55,0,Not Started,Critical
-CSI 2101,Quiz 1,25-01-2024,3.75,0,Not Started,Low
-CSI 2101,Quiz 2,01-02-2024,3.75,0,Not Started,Low
-CSI 2101,Quiz 3,08-02-2024,3.75,0,Not Started,Low
-CSI 2101,Quiz 4,15-02-2024,3.75,0,Not Started,Low
-CSI 2101,Quiz 5,14-03-2024,3.75,0,Not Started,Low
-CSI 2101,Quiz 6,21-03-2024,3.75,0,Not Started,Low
-CSI 2101,Quiz 7,28-03-2024,3.75,0,Not Started,Low
-CSI 2101,Quiz 8,04-04-2024,3.75,0,Not Started,Low
-CSI 2101,Midterm,29-02-2024,30,0,Not Started,High
-CSI 2101,Final,N/A,40,0,Not Started,Critical
-CSI 2120,Project pt. 1 (Java),N/A,5,0,Not Started,Low
-CSI 2120,Project pt. 2 (Scheme),N/A,5,0,Not Started,Low
-CSI 2120,Project pt. 3 (Go),N/A,5,0,Not Started,Low
-CSI 2120,Project pt. 4 (Prolog),N/A,5,0,Not Started,Low
-CSI 2120,Assignment 1 (Scheme),N/A,5,0,Not Started,Medium
-CSI 2120,Assignment 2 (Go),N/A,5,0,Not Started,Medium
-CSI 2120,Assignment 3 (Prolog),N/A,5,0,Not Started,Medium
-CSI 2120,Midterm,N/A,20,0,Not Started,High
-CSI 2120,Final,N/A,35,0,Not Started,Critical
-CSI 2911,Case Study 1,25-01-2024,10,0,Not Started,Medium
-CSI 2911,Case Study 2,15-02-2024,10,0,Not Started,Medium
-CSI 2911,Case Study 3,14-03-2024,10,0,Not Started,Medium
-CSI 2911,Case Study 4,04-04-2024,10,0,Not Started,Medium
-CSI 2911,Project proposal,29-02-2024,0,0,Not Started,Medium
-CSI 2911,Midterm 1,15-02-2024,15,0,Not Started,High
-CSI 2911,Midterm 2,14-03-2024,15,0,Not Started,High
-CSI 2911,Technical Paper Final,10-04-2024,15,0,Not Started,Critical
-CSI 2911,Educational Video Final,10-04-2024,15,0,Not Started,Critical
+CSI-2132,Midterm,13-02-2024,10,0,Not Started,High
+CSI-2132,Deliverable 1,16-02-2024,12.5,0,Not Started,Medium
+CSI-2132,Deliverable 2,31-03-2024,12.5,0,Not Started,Medium
+CSI-2132,Assignment 1,21-02-2024,5,0,Not Started,Medium
+CSI-2132,Assignment 2,25-03-2024,5,0,Not Started,Medium
+CSI-2132,Assignment 3,07-04-2024,5,0,Not Started,Medium
+CSI-2132,Final,N/A,50,0,Not Started,Critical
+MAT-2377,Midterm,15-02-2024,25,0,Not Started,Critical
+MAT-2377,Assignment 1,21-01-2024,5,0,Not Started,Medium
+MAT-2377,Assignment 2,11-02-2024,5,0,Not Started,Medium
+MAT-2377,Assignment 3,10-03-2024,5,0,Not Started,Medium
+MAT-2377,Assignment 4,31-03-2024,5,0,Not Started,Medium
+MAT-2377,Final,N/A,55,0,Not Started,Critical
+CSI-2101,Quiz 1,25-01-2024,3.75,0,Not Started,Low
+CSI-2101,Quiz 2,01-02-2024,3.75,0,Not Started,Low
+CSI-2101,Quiz 3,08-02-2024,3.75,0,Not Started,Low
+CSI-2101,Quiz 4,15-02-2024,3.75,0,Not Started,Low
+CSI-2101,Quiz 5,14-03-2024,3.75,0,Not Started,Low
+CSI-2101,Quiz 6,21-03-2024,3.75,0,Not Started,Low
+CSI-2101,Quiz 7,28-03-2024,3.75,0,Not Started,Low
+CSI-2101,Quiz 8,04-04-2024,3.75,0,Not Started,Low
+CSI-2101,Midterm,29-02-2024,30,0,Not Started,High
+CSI-2101,Final,N/A,40,0,Not Started,Critical
+CSI-2120,Project pt. 1 (Java),N/A,5,0,Not Started,Low
+CSI-2120,Project pt. 2 (Scheme),N/A,5,0,Not Started,Low
+CSI-2120,Project pt. 3 (Go),N/A,5,0,Not Started,Low
+CSI-2120,Project pt. 4 (Prolog),N/A,5,0,Not Started,Low
+CSI-2120,Assignment 1 (Scheme),N/A,5,0,Not Started,Medium
+CSI-2120,Assignment 2 (Go),N/A,5,0,Not Started,Medium
+CSI-2120,Assignment 3 (Prolog),N/A,5,0,Not Started,Medium
+CSI-2120,Midterm,N/A,20,0,Not Started,High
+CSI-2120,Final,N/A,35,0,Not Started,Critical
+CSI-2911,Case Study 1,25-01-2024,10,0,Not Started,Medium
+CSI-2911,Case Study 2,15-02-2024,10,0,Not Started,Medium
+CSI-2911,Case Study 3,14-03-2024,10,0,Not Started,Medium
+CSI-2911,Case Study 4,04-04-2024,10,0,Not Started,Medium
+CSI-2911,Project proposal,29-02-2024,0,0,Not Started,Medium
+CSI-2911,Midterm 1,15-02-2024,15,0,Not Started,High
+CSI-2911,Midterm 2,14-03-2024,15,0,Not Started,High
+CSI-2911,Technical Paper Final,10-04-2024,15,0,Not Started,Critical
+CSI-2911,Educational Video Final,10-04-2024,15,0,Not Started,Critical
