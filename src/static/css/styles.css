@@ -14,9 +14,17 @@
 }
 
 .assignment-table-container{
-    background-color: blue;
     width: 50%;
+    padding: 100px;
+    display: flex;
+    justify-content: center;
 }
+
+.assignment-table{
+    align-self: center;
+    font-family: 'Monaco', monospace;
+}
+
 .grade-table-container{
     background-color: aqua;
     

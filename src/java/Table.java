@@ -4,11 +4,11 @@ import java.util.Comparator;
 
 public class Table {
     
-    String[][] data;
+    private String[][] data;
 
-    TaskMaster tasks;
-    ArrayList<Task> blackList;
-    ArrayList<Task> sortedTasks;
+    private TaskMaster tasks;
+    private ArrayList<Task> blackList;
+    private ArrayList<Task> sortedTasks;
 
 
 
@@ -91,5 +91,6 @@ public class Table {
     public int getNumberOfRows(){ return data.length; }
     public String[] getRow(int i){ return data[i]; }
     public String getCell(int row, int col){ return data[row][col]; }
+    public String[][] getMatrix(){ return data; }
 
 }

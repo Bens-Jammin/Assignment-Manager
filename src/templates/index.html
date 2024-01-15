@@ -4,19 +4,18 @@
 <head>
     <meta charset='UTF-8'/>
     <title>Assignment Tracker</title>
-    <link rel='stylesheet' href='style.css'/>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
     <div class="tables-container">
         <div class='assignment-table-container'>
-            <p>Hello assignment-table-container</p>
+                {{ table | safe }}
         </div>
         <div class="minor-table-container">
             <div class="todo-table-container">
                 <p>Hello todo-table-container</p>
             </div>
             <div class="grade-table-container">
-                    
                 <p>Hello grade-table-container</p>
             </div>    
         </div>
