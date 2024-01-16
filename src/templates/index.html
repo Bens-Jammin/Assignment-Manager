@@ -9,14 +9,14 @@
 <body>
     <div class="tables-container">
         <div class='assignment-table-container'>
-                {{ table | safe }}
+                {{ assignments_table | safe }}
         </div>
         <div class="minor-table-container">
             <div class="todo-table-container">
-                <p>Hello todo-table-container</p>
+                {{ todo_table | safe }}
             </div>
             <div class="grade-table-container">
-                <p>Hello grade-table-container</p>
+                {{ grade_table | safe }}
             </div>    
         </div>
     </div>

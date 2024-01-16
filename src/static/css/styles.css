@@ -43,11 +43,30 @@ th {
 
 
 .grade-table-container{
-    background-color: aqua;
-    
+    width: 50%;
+    padding: 75px;
+    display: flex;
+    justify-content: center;
+}
+.grade-table{
+    width: 100%;
+    align-self: center;
+    font-family: 'Monaco', monospace;
+    border-collapse: collapse;
+    border-bottom: 1px solid black;
 }
 
 
 .todo-table-container{
-    background-color: blueviolet;
+    width: 50%;
+    padding: 75px;
+    display: flex;
+    justify-content: center;
+}
+.todo-table{
+    width: 100%;
+    align-self: center;
+    font-family: 'Monaco', monospace;
+    border-collapse: collapse;
+    border-bottom: 1px solid black;
 }
