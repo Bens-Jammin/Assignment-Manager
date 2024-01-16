@@ -1,5 +1,6 @@
 body {
-    font-family: 'Monaco', monospace;
+    font-size: medium;
+    font-family: "Helvetica Neue", sans-serif
 }
 
 /* https://www.youtube.com/watch?v=phWxA89Dy94 */ 
@@ -35,18 +36,21 @@ tr:nth-child(even) { background-color: #f2f2f2; }
 tr:hover { background-color: orange; }
 td{ 
     padding: 5px;
-    border-left: 1px solid grey;
-    border-right: 1px solid grey; 
+    padding-left: 7px;
+    padding-right: 7px;
+    /* border-left: 1px solid grey;
+    border-right: 1px solid grey;  */
 }
 th { 
-    background-color: #04AA6D;
+    background-color: #073b4c;
     color: white; 
 }
 
 
 .grade-table-container{
     width: 50%;
-    padding: 75px;
+    height: 75%;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -60,7 +64,7 @@ th {
 
 .todo-table-container{
     width: 50%;
-    padding: 75px;
+    padding-left: 50px;
     display: flex;
     flex-direction: column;
     justify-content: center;

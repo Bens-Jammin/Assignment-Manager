@@ -6,28 +6,28 @@
     <title>Assignment Tracker</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
-<body>
-    <div class="tables-container">
 
+<body>
+
+    <div class="tables-container">
         <div class='assignment-table-container'>
                 {{ assignments_table | safe }}
         </div>
 
         <div class="minor-table-container">
-
-            <div class="todo-table-container">
-                <p style="align-self: center;"> TODO </p>
-                {{ todo_table | safe }}
-            </div>
-
             <div class="grade-table-container">
                 <p style="align-self: center"> GRADES </p>
                 {{ grade_table | safe }}
             </div>    
 
+            <div class="todo-table-container">
+                <p style="align-self: center;"> TODO </p>
+                {{ todo_table | safe }}
+            </div>
         </div>
-    
     </div>
+
+
 </body>
 
 </html>

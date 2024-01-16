@@ -27,7 +27,11 @@ def test():
     html_todo_table = dm.convert_matrix_to_html_table( todo_table, 'todo-table', todo_headers )
 
 
-    return render_template('index.html', assignments_table=html_table, grade_table=html_grade_table, todo_table=html_todo_table)
+    return render_template('index.html', 
+        assignments_table=html_table, 
+        grade_table=html_grade_table, 
+        todo_table=html_todo_table
+    )
 
 if __name__ == "__main__":
     app.run()
