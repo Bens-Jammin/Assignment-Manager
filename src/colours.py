@@ -71,8 +71,8 @@ def style_cell( index: int, cell: str ) -> str:
     if index == 2: colour = ""
     if index == 3: colour = ""
     if index == 4: colour = style_grade( cell )
-    if index == 5: colour = style_status( cell )
-    if index == 6: colour = style_priority( cell )
+    if index == 5: colour = "" # style_status( cell )
+    if index == 6: colour = "" # style_priority( cell )
 
     if colour == "": return ""
 

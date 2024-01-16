@@ -1,5 +1,5 @@
 body {
-    font-size: medium;
+    font-size: 15px;
     font-family: "Helvetica Neue", sans-serif
 }
 
@@ -31,21 +31,6 @@ body {
     border-bottom: 1px solid black;
 }
 
-/* styling for all tables  */
-tr:nth-child(even) { background-color: #f2f2f2; }
-tr:hover { background-color: orange; }
-td{ 
-    padding: 5px;
-    padding-left: 7px;
-    padding-right: 7px;
-    /* border-left: 1px solid grey;
-    border-right: 1px solid grey;  */
-}
-th { 
-    background-color: #073b4c;
-    color: white; 
-}
-
 
 .grade-table-container{
     width: 50%;
@@ -73,4 +58,20 @@ th {
     width: 100%;
     align-self: center;
     border-collapse: collapse;
+}
+
+
+/* styling for all tables  */
+tr:nth-child(even) { background-color: #f2f2f2; }
+td{ 
+    padding: 5px;
+    padding-left: 7px;
+    padding-right: 7px;
+    /* border-left: 1px solid grey;
+    border-right: 1px solid grey;  */
+}
+th { 
+    padding: 7px;
+    background-color: #073b4c;
+    color: white; 
 }
