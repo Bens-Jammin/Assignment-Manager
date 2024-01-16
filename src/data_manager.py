@@ -6,13 +6,13 @@ def convert_csv_to_matrix(file_path: str) -> list[list[str]]:
         line_count = sum(1 for line in file)
 
     # headers = [
-    #     "COURSE",
-    #     "NAME",
-    #     "DUE DATE",
-    #     "WEIGHT",
-    #     "GRADE",
-    #     "STATUS",
-    #     "PRIORITY"
+        "COURSE",
+        "NAME",
+        "DUE DATE",
+        "WEIGHT",
+        "GRADE",
+        "STATUS",
+        "PRIORITY"
     # ]
     
     # initialize matrix with room for headers and all the data 
@@ -98,19 +98,22 @@ def create_todo_matrix( data: list[list[str]] ) -> list[list[str]]:
 
 
 
-def convert_matrix_to_html_table( table: list[list[str]], class_name: str ) -> str:
+def convert_matrix_to_html_table( table: list[list[str]], class_name: str, headers: list[str] ) -> str:
     
     html_table = "<table class='"+class_name+"'>"
 
-    is_first_row = True
+    # headers
+    html_table += "<tr>"
+    for cell in headers:
+        cell_starter = "<th style='text-align: center'>"
+        cell_ender = "</th>"
+        html_table += cell_starter + str(cell) + cell_ender
+    html_table += "</tr>"
 
+    # rest of the data
     for row in table:
         cell_starter = "<td>"
         cell_ender = "</td>"
-        if is_first_row:
-            cell_starter = "<th style='text-align: center'>"
-            cell_ender = "</th>"
-            is_first_row = False
         
         # append all data from matrix to code
         html_table += "<tr>"

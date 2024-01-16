@@ -8,14 +8,23 @@ app = Flask(__name__)
 @app.route('/')
 def test():
     
+    # TODO : for some reason CSI 2132 midterm is at the top of the list ?
+    # TODO : allow saving changes
+    # TODO : allow status, priority, grade to be changed
+    # TODO : conditional font colouring
+    # TODO : add '%' to the grade columns
+
     table = dm.convert_csv_to_matrix("Ben.csv")
-    html_table = dm.convert_matrix_to_html_table( table, 'assignment-table' )
+    assignments_headers = ["COURSE","NAME","DUE DATE","WEIGHT","GRADE","STATUS","PRIORITY"]
+    html_table = dm.convert_matrix_to_html_table( table, 'assignment-table', assignments_headers )
     
     grade_table = dm.create_grade_matrix( table )
-    html_grade_table = dm.convert_matrix_to_html_table( grade_table, 'grade-table' )
+    grade_headers = ["COURSE", "GRADE"]
+    html_grade_table = dm.convert_matrix_to_html_table( grade_table, 'grade-table', grade_headers )
 
     todo_table = dm.create_todo_matrix( table )
-    html_todo_table = dm.convert_matrix_to_html_table( todo_table, 'todo-table' )
+    todo_headers = ["COURSE", "ASSIGNMENT"]
+    html_todo_table = dm.convert_matrix_to_html_table( todo_table, 'todo-table', todo_headers )
 
     for row in todo_table:
         print(row)
