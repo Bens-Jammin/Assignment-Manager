@@ -1,6 +1,6 @@
 import csv
 from datetime import MAXYEAR, datetime, timedelta
-from colours import style_course_code
+from colours import style_cell
 
 def convert_csv_to_matrix(file_path: str) -> list[list[str]]:
     with open(file_path, 'r') as file:
@@ -107,8 +107,10 @@ def convert_matrix_to_html_table( table: list[list[str]], class_name: str, heade
         
         # append all data from matrix to code
         html_table += "<tr>"
-        for cell in row:
-            colour_styling = style_course_code( cell )
+        for i in range(len(row)):
+            cell = row[i]
+
+            colour_styling = style_cell( i, cell )
             cell_starter = "<td"+ colour_styling +">"
             cell_ender = "</td>"
 
