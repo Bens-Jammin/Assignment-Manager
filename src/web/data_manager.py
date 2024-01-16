@@ -1,19 +1,11 @@
 import csv
 from datetime import MAXYEAR, datetime, timedelta
+from colours import style_course_code
 
 def convert_csv_to_matrix(file_path: str) -> list[list[str]]:
     with open(file_path, 'r') as file:
         line_count = sum(1 for line in file)
 
-    # headers = [
-        "COURSE",
-        "NAME",
-        "DUE DATE",
-        "WEIGHT",
-        "GRADE",
-        "STATUS",
-        "PRIORITY"
-    # ]
     
     # initialize matrix with room for headers and all the data 
     task_data = [ [] for i in range(line_count) ]
@@ -112,12 +104,14 @@ def convert_matrix_to_html_table( table: list[list[str]], class_name: str, heade
 
     # rest of the data
     for row in table:
-        cell_starter = "<td>"
-        cell_ender = "</td>"
         
         # append all data from matrix to code
         html_table += "<tr>"
         for cell in row:
+            colour_styling = style_course_code( cell )
+            cell_starter = "<td"+ colour_styling +">"
+            cell_ender = "</td>"
+
             html_table += cell_starter+ str(cell) +cell_ender
         
         html_table += "</tr>"
@@ -137,9 +131,7 @@ def sort_matrix_by_date( matrix: list[list[str]] ) -> list[list[str]]:
             return datetime(int(year), int(month), int(day))
 
     # Sort the matrix by date using the defined key function
-    headers = [ matrix[0] ]
-
 
     sorted_matrix = sorted( matrix[1:], key=date_key )
-    # Reattach the header row
-    return headers + sorted_matrix
+
+    return sorted_matrix

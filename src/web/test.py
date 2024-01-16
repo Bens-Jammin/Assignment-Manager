@@ -8,13 +8,13 @@ app = Flask(__name__)
 @app.route('/')
 def test():
     
-    # TODO : for some reason CSI 2132 midterm is at the top of the list ?
-    # TODO : allow saving changes
-    # TODO : allow status, priority, grade to be changed
     # TODO : conditional font colouring
+    # TODO : allow status, priority, grade to be changed
+    # TODO : allow saving changes
     # TODO : add '%' to the grade columns
 
     table = dm.convert_csv_to_matrix("Ben.csv")
+
     assignments_headers = ["COURSE","NAME","DUE DATE","WEIGHT","GRADE","STATUS","PRIORITY"]
     html_table = dm.convert_matrix_to_html_table( table, 'assignment-table', assignments_headers )
     
@@ -26,11 +26,8 @@ def test():
     todo_headers = ["COURSE", "ASSIGNMENT"]
     html_todo_table = dm.convert_matrix_to_html_table( todo_table, 'todo-table', todo_headers )
 
-    for row in todo_table:
-        print(row)
-    # how do i return both tables ?
 
     return render_template('index.html', assignments_table=html_table, grade_table=html_grade_table, todo_table=html_todo_table)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)

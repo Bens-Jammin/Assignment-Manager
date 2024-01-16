@@ -8,18 +8,25 @@
 </head>
 <body>
     <div class="tables-container">
+
         <div class='assignment-table-container'>
                 {{ assignments_table | safe }}
         </div>
+
         <div class="minor-table-container">
+
             <div class="todo-table-container">
-                <p style="text-align: center,"> TODO </p>
+                <p style="align-self: center;"> TODO </p>
                 {{ todo_table | safe }}
             </div>
+
             <div class="grade-table-container">
+                <p style="align-self: center"> GRADES </p>
                 {{ grade_table | safe }}
             </div>    
+
         </div>
+    
     </div>
 </body>
 

@@ -1,3 +1,6 @@
+body {
+    font-family: 'Monaco', monospace;
+}
 
 /* https://www.youtube.com/watch?v=phWxA89Dy94 */ 
 .tables-container{
@@ -23,7 +26,6 @@
 .assignment-table{
     width: 100%;
     align-self: center;
-    font-family: 'Monaco', monospace;
     border-collapse: collapse;
     border-bottom: 1px solid black;
 }
@@ -46,14 +48,13 @@ th {
     width: 50%;
     padding: 75px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .grade-table{
     width: 100%;
     align-self: center;
-    font-family: 'Monaco', monospace;
     border-collapse: collapse;
-    border-bottom: 1px solid black;
 }
 
 
@@ -61,12 +62,11 @@ th {
     width: 50%;
     padding: 75px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 .todo-table{
     width: 100%;
     align-self: center;
-    font-family: 'Monaco', monospace;
     border-collapse: collapse;
-    border-bottom: 1px solid black;
 }
