@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 
 <html lang="en">
 <head>
@@ -11,7 +11,10 @@
 
     <div class="tables-container">
         <div class='assignment-table-container'>
-                {{ assignments_table | safe }}
+            <div class='save-button' ><form method='POST' action='/save' >
+                <button type="button">Save</button>
+            </form></div>
+            {{ assignments_table | safe }}
         </div>
 
         <div class="minor-table-container">
@@ -26,7 +29,6 @@
             </div>
         </div>
     </div>
-
 
 </body>
 
