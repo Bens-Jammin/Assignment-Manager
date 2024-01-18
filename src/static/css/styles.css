@@ -49,7 +49,8 @@ body {
 
 .assignment-table-container{
     width: 50%;
-    padding: 75px;
+    padding-left: 75px;
+    padding-right: 75px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,7 +75,7 @@ body {
 .grade-table-container{
     width: 50%;
     height: 75%;
-    padding: 50px;
+    padding: 50px;  
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, jsonify
 import data_manager as dm
 import html_generator as html
 import table_generator as tgen
@@ -6,10 +6,11 @@ import table_generator as tgen
 app = Flask(__name__)
 
 
-@app.route('/save', methods=['GET'])
+@app.route('/save', methods=['POST'])
 def save():
     print("saving...")
-
+    
+    return jsonify({'status': 'success'}), 200
 
 @app.route('/')
 def app_code():
@@ -26,11 +27,11 @@ def app_code():
     
     grade_table = tgen.create_grade_matrix( table )
     grade_headers = ["COURSE", "GRADE"]
-    html_grade_table = html.convert_matrix_to_html_table( grade_table, 'grade-table', grade_headers )
+    html_grade_table = html.convert_matrix_to_html_table( grade_table, 'grade-table', grade_headers, True )
 
     todo_table = tgen.create_todo_matrix( table )
     todo_headers = ["COURSE", "ASSIGNMENT"]
-    html_todo_table = html.convert_matrix_to_html_table( todo_table, 'todo-table', todo_headers )
+    html_todo_table = html.convert_matrix_to_html_table( todo_table, 'todo-table', todo_headers, True )
 
     priority_dropdown_options = ["Low", "Medium", "High", "Critical"]
 

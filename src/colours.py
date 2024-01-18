@@ -1,4 +1,7 @@
 # https://coolors.co/palette/ef476f-f78c6b-ffd166-83d483-06d6a0-0cb0a9-118ab2-073b4c
+from ctypes import alignment
+
+
 RED = "#ff4444"
 ORANGE = "#F78C6B"
 YELLOW = "#FFD166"
@@ -64,7 +67,7 @@ def style_status( status: str ) -> str:
 
 
 
-def style_cell( index: int, cell: str ) -> str:
+def style_cell( index: int, cell: str, is_centred ) -> str:
 
     if index == 0: colour = "" # style_course_code( cell )
     if index == 1: colour = "" 
@@ -74,6 +77,9 @@ def style_cell( index: int, cell: str ) -> str:
     if index == 5: colour = style_status( cell )
     if index == 6: colour = style_priority( cell )
 
-    if colour == "": return ""
+    alignment = "'text-align: center'"
 
-    return " style=background-color:"+colour
+    if colour == "" and not is_centred: return ""
+    if is_centred and colour == "": return " style="+alignment
+    if colour != "" and not is_centred: return " style=background-color:"+colour
+    return " style=background-color:"+colour+ "; "+alignment

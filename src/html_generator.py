@@ -2,7 +2,7 @@ from html.entities import html5
 from bs4 import BeautifulSoup
 from colours import style_cell
 
-def convert_matrix_to_html_table( table: list[list[str]], class_name: str, headers: list[str] ) -> str:
+def convert_matrix_to_html_table( table: list[list[str]], class_name: str, headers: list[str], all_centred=False ) -> str:
     
     html_table = "<table class='"+class_name+"'>"
 
@@ -18,12 +18,14 @@ def convert_matrix_to_html_table( table: list[list[str]], class_name: str, heade
         
         for i, cell in enumerate(row):
 
-            colour_styling = style_cell( i, cell )
+            colour_styling = style_cell( i, cell, all_centred )
 
             cell_contents = set_non_default_cell_contents( i, str(cell), selected_priority )
 
             cell_starter = "<td"+ colour_styling +">"
             cell_ender = "</td>"
+            
+            
 
             html_table += cell_starter+ cell_contents +cell_ender
         
