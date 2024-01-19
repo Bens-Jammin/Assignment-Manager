@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify, request
 import data_manager as dm
 import html_generator as html
 import table_generator as tgen
@@ -8,7 +8,12 @@ app = Flask(__name__)
 
 @app.route('/save', methods=['POST'])
 def save():
-    print("saving...")
+    
+    # why is this causing an error ???
+    # data = request.get_json()  # This will contain the JSON data sent by the AJAX call
+    # print(data)
+    # assignments = data['assignments']
+    print( assignments )
     
     return jsonify({'status': 'success'}), 200 
 

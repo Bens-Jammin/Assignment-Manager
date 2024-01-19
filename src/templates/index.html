@@ -18,9 +18,9 @@
 
     <div class="tables-container">
         <div class='assignment-table-container'>
-            <div class='save-button' ><form method='POST' action='/save' >
-                <button type="button">Save</button>
-            </form></div>
+            <div class='save-button' >
+                <button type="submit" id="saveButton">Save</button>
+            </div>
             {{ assignments_table | safe }}
         </div>
 
@@ -36,6 +36,46 @@
             </div>
         </div>
     </div>
+
+    <!-- script for the save button -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#saveButton").click(function(){
+                
+                const assignmentCells = document.getElementsByClassName('assignment-table');
+                
+                // Create an array to hold the data from each cell
+                let assignmentsData = [];
+                for (let cell of assignmentCells) { 
+                     
+                    // Push the text content of each cell to the array
+                    assignmentsData.push(cell.textContent);
+                }
+
+                $.ajax({
+                    url: "{{ url_for('save') }}",
+                    type: "POST",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    data: JSON.stringify({assignments: assignmentsData}), // Data to be sent to the server
+                    contentType: "application/json", // This sets the content type of the request
+                    dataType: "json",
+                    success: function(response) {
+                        console.log( JSON.stringify({assignments: assignmentsData}) )
+                        // You can add code here to update the UI as needed.
+                    },
+                    error: function(xhr) {
+                        // Handle error.
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
+        </script>
+        ```
+    
 
 </body>
 
