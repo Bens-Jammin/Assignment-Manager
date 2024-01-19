@@ -14,7 +14,7 @@ def save():
 
 
 @app.route('/')
-def app_code():
+def assignments():
     
     # TODO : allow saving changes
     # TODO : set default selected option for dropdown
@@ -28,11 +28,11 @@ def app_code():
     
     grade_table = tgen.create_grade_matrix( table )
     grade_headers = ["COURSE", "GRADE"]
-    html_grade_table = html.convert_matrix_to_html_table( grade_table, 'grade-table', grade_headers )
+    html_grade_table = html.convert_matrix_to_html_table( grade_table, 'grade-table', grade_headers, True )
 
     todo_table = tgen.create_todo_matrix( table )
     todo_headers = ["COURSE", "ASSIGNMENT"]
-    html_todo_table = html.convert_matrix_to_html_table( todo_table, 'todo-table', todo_headers )
+    html_todo_table = html.convert_matrix_to_html_table( todo_table, 'todo-table', todo_headers, True )
 
     priority_dropdown_options = ["Low", "Medium", "High", "Critical"]
 

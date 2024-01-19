@@ -43,7 +43,7 @@ def create_todo_matrix( data: list[list[str]] ) -> list[list[str]]:
         status = row[-2].lower()
 
         # no need to do it if its done
-        if status == "complete" or status == "completed": continue
+        if status == "complete" or status == "completed" or days_until(date) < 0: continue
 
         if ( priority == "none" or priority == "low" ) and is_this_week(date):
             assignments_to_do.append( [course_code, assignment_name] )

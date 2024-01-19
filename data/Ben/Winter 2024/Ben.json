@@ -1,65 +1,65 @@
 {
     "08:30":{
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": []
+        "Mon": "",
+        "Tue": "",
+        "Wed": "",
+        "Thu": "Stats lec",
+        "Fri": ""
     },
     "10:00":{
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": []
+        "Mon": "",
+        "Tue": "Stats lec",
+        "Wed": "",
+        "Thu": "Programming paradigms lab",
+        "Fri": ""
     },
     "11:30":{
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": []
+        "Mon": "",
+        "Tue": "",
+        "Wed": "",
+        "Thu": "",
+        "Fri": ""
     },
     "13:00":{
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": []
+        "Mon": "",
+        "Tue": "",
+        "Wed": "",
+        "Thu": "",
+        "Fri": ""
     },
     "14:30":{
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": []
+        "Mon": "DB lab",
+        "Tue": "",
+        "Wed": "",
+        "Thu": "Programming paradigms lec",
+        "Fri": "Professional practice dgd"
     },
     "16:00":{
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": []
+        "Mon": "DB dgd",
+        "Tue": "Programming paradigms lec",
+        "Wed": "",
+        "Thu": "Programming paradigms dgd",
+        "Fri": ""
     },
     "17:30":{
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": []
+        "Mon": "",
+        "Tue": "Discrete structures lec",
+        "Wed": "",
+        "Thu": "Discrete structures dgd?",
+        "Fri": "Discrete structures lec?"
     },
     "19:00":{
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": []
+        "Mon": "DB lec",
+        "Tue": "",
+        "Wed": "",
+        "Thu": "Professional practice lec",
+        "Fri": ""
     },
     "20:30":{
-        "Mon": [],
-        "Tue": [],
-        "Wed": [],
-        "Thu": [],
-        "Fri": []
+        "Mon": "DB lec",
+        "Tue": "",
+        "Wed": "",
+        "Thu": "Professional practice lec",
+        "Fri": ""
     }
 }

@@ -95,19 +95,29 @@ def generate_dropdown(options: list[str], name: str, id: str, selected_option: s
 
 def generate_time_table(data: list[str]) -> str:
     html_table = "<table class='time-table' id='time-table'>"
-    html_table += generate_header_code(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])
+    html_table += generate_header_code(["Times","Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])
 
-    cols = 5
-    rows = len(data) // 5  # Assuming 5 columns
+    cols = 6  # Updated to 6 columns
+    rows = len(data) // 6  # Assuming 6 columns
+
+    times = ["8:30", "10:00", "11:30", "13:00", "14:30", "16:00", "17:30", "19:00", "20:30"]
 
     for i in range(rows):
         html_table += "<tr>"
-        for j in range(cols):  # Assuming 5 columns
-            info = ', '.join( data[i * cols + j] )
-            cell = "<td>" + info + "</td>"
+        for j in range(cols):
+            if j != 0:
+                info = data[i * 5 + j-1]
+            else:
+                info = times[i]
+            cell = "<td style='text-align: center'>" + info + "</td>"
             html_table += cell
         html_table += "</tr>"
 
     html_table += "</table>"
-    
+
     return html_table
+
+
+
+def format_schedule_cell( time_block: str) -> str:
+    return ""
