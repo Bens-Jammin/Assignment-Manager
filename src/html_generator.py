@@ -4,7 +4,7 @@ from colours import style_cell
 
 def convert_matrix_to_html_table( table: list[list[str]], class_name: str, headers: list[str], all_centred=False ) -> str:
     
-    html_table = "<table class='"+class_name+"'>"
+    html_table = "<table class='"+class_name+"' id='"+class_name+"'>"
 
     html_table += generate_header_code( headers )
 
@@ -90,3 +90,24 @@ def generate_dropdown(options: list[str], name: str, id: str, selected_option: s
     dropdown += "</form>"
     
     return dropdown
+
+
+
+def generate_time_table(data: list[str]) -> str:
+    html_table = "<table class='time-table' id='time-table'>"
+    html_table += generate_header_code(["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])
+
+    cols = 5
+    rows = len(data) // 5  # Assuming 5 columns
+
+    for i in range(rows):
+        html_table += "<tr>"
+        for j in range(cols):  # Assuming 5 columns
+            info = ', '.join( data[i * cols + j] )
+            cell = "<td>" + info + "</td>"
+            html_table += cell
+        html_table += "</tr>"
+
+    html_table += "</table>"
+    
+    return html_table
