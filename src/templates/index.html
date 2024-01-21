@@ -40,41 +40,47 @@
     <!-- script for the save button -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        $(document).ready(function(){
-            $("#saveButton").click(function(){
-                
-                const assignmentCells = document.getElementsByClassName('assignment-table');
-                
-                // Create an array to hold the data from each cell
-                let assignmentsData = [];
-                for (let cell of assignmentCells) { 
-                     
-                    // Push the text content of each cell to the array
-                    assignmentsData.push(cell.textContent);
-                }
-
-                $.ajax({
-                    url: "{{ url_for('save') }}",
-                    type: "POST",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    data: JSON.stringify({assignments: assignmentsData}), // Data to be sent to the server
-                    contentType: "application/json", // This sets the content type of the request
-                    dataType: "json",
-                    success: function(response) {
-                        console.log( JSON.stringify({assignments: assignmentsData}) )
-                        // You can add code here to update the UI as needed.
-                    },
-                    error: function(xhr) {
-                        // Handle error.
-                        console.log(xhr.responseText);
-                    }
+        document.addEventListener('DOMContentLoaded', function() {
+            var saveButton = document.querySelector('.save-button');
+            
+            saveButton.addEventListener('click', function() {
+              var table = document.querySelector('.assignment-table');
+              var rows = table.querySelectorAll('tr');
+              var csvContent = '';
+          
+              // Loop through the rows and construct csv content, skipping the header row
+              Array.from(rows).forEach(function(row, index){
+                // Skip the header row (usually the first row with index 0)
+                if (index === 0) return;
+          
+                var cols = row.querySelectorAll('td, th');
+                var rowData = [];
+                cols.forEach(function(col, colIndex) {
+                  // Check if the column contains a dropdown box (select element)
+                  var select = col.querySelector('select');
+                  if (select) {
+                    // If it does, use the selected option's text
+                    var selectedOption = select.options[select.selectedIndex].text;
+                    rowData.push(selectedOption.trim());
+                  } else {
+                    // Otherwise, use the text content of the cell
+                    rowData.push(col.textContent.trim());
+                  }
                 });
+                csvContent += rowData.join(',') + '\n';
+              });
+          
+              // Trigger CSV download with suggested file name and location
+              var hiddenElement = document.createElement('a');
+              hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+              hiddenElement.target = '_blank';
+              // Suggest the file name and location
+              hiddenElement.download = 'data/Ben/Winter 2024/assignment-data.csv';
+              hiddenElement.click();
             });
-        });
+          });                                      
         </script>
-        ```
+        
     
 
 </body>
