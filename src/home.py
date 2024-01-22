@@ -2,16 +2,13 @@ from flask import Flask, render_template, jsonify, request
 import data_manager as dm
 import html_generator as html
 import table_generator as tgen
-import pandas as pd
 
 app = Flask(__name__)
 
 
 @app.route('/save', methods=['POST'])
 def save():
-    
-    # TODO: upon downloading, search for it in downloads and save to data\Ben\Winter 2024s
-    
+        
     # assignments = data['assignments']
     print( "saving..." )
         

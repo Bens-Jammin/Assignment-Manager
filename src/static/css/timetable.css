@@ -48,6 +48,7 @@ body {
     width: 100%;
     align-self: center;
     border-collapse: collapse;
+    table-layout: fixed;
 }
 
 tr:nth-child(even) { background-color: #f2f2f2; }

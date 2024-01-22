@@ -1,11 +1,8 @@
-from html.entities import html5
-from bs4 import BeautifulSoup
 from colours import style_cell
 
-def convert_matrix_to_html_table( table: list[list[str]], class_name: str, headers: list[str], all_centred=False ) -> str:
+def convert_matrix_to_html_table( table: list[list[str]], class_name: str, headers: list[str], center_all=False ) -> str:
     
     html_table = "<table class='"+class_name+"' id='"+class_name+"'>"
-
     html_table += generate_header_code( headers )
 
     # rest of the data
@@ -18,18 +15,18 @@ def convert_matrix_to_html_table( table: list[list[str]], class_name: str, heade
         
         for i, cell in enumerate(row):
 
-            colour_styling = style_cell( i, cell, all_centred )
+            colour_styling = style_cell( i, cell, center_all )
 
             cell_contents = set_non_default_cell_contents( i, str(cell), selected_priority )
 
             cell_starter = "<td"+ colour_styling +">"
             cell_ender = "</td>"
-            
-            
 
             html_table += cell_starter+ cell_contents +cell_ender
         
+        
         html_table += "</tr>"
+    
     
     html_table += "</table>"
 
@@ -50,19 +47,15 @@ def generate_header_code( headers: list[str] ) -> str:
 
 def set_non_default_cell_contents( index: int, cell: str, selected_option ) -> str:
     cell_contents = ""
-    # grade
-    if index == 4:
+    
+    if index == 4:    # grade
         cell_contents = cell + "%"
-
-    # status col index
-    elif index == 5:
+    elif index == 5:    # status col index
         options = [ "Not Started", "Partially Started", "Mostly Done", "Editing", "Complete" ]
         name = "status"
         dropdown_id = "status-dropdown"
         cell_contents = generate_dropdown( options, name, dropdown_id, selected_option="" )
-
-    # priority col index
-    elif index == 6:
+    elif index == 6:    # priority col index
         options = [ "None", "Low", "Medium", "High", "Critical" ]
         name = "priority"
         dropdown_id = "priority-dropdown"

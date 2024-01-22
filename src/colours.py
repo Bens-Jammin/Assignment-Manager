@@ -66,7 +66,7 @@ def style_status( status: str ) -> str:
 
 
 
-def style_cell( index: int, cell: str, is_centred ) -> str:
+def style_cell( index: int, cell: str, is_centred: bool ) -> str:
 
     if index == 0: colour = "" # style_course_code( cell )
     if index == 1: colour = "" 

@@ -1,6 +1,8 @@
 {
-    "python.analysis.autoImportCompletions": true,
+    "python.analysis.autoImportCompletions": false,
     "python.analysis.extraPaths": [
-        "./src/app"
-    ]
+        "./src/app",
+        "./src/app/Format"
+    ],
+    "python.analysis.typeCheckingMode": "off"
 }
