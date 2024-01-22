@@ -21,9 +21,6 @@ def save():
 @app.route('/')
 def assignments():
     
-    # TODO : allow saving changes
-    # TODO : set default selected option for dropdown
-
     save()
 
     table = dm.convert_csv_to_matrix("data\Ben\Winter 2024\Ben.csv")
