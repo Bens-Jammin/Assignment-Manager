@@ -3,14 +3,14 @@
         "Mon": "",
         "Tue": "",
         "Wed": "",
-        "Thu": "Stats lec",
+        "Thu": "MAT 2377 LEC",
         "Fri": ""
     },
     "10:00":{
         "Mon": "",
-        "Tue": "Stats lec",
+        "Tue": "MAT 3277 LEC",
         "Wed": "",
-        "Thu": "Programming paradigms lab",
+        "Thu": "CSI 2120 LAB",
         "Fri": ""
     },
     "11:30":{
@@ -28,38 +28,38 @@
         "Fri": ""
     },
     "14:30":{
-        "Mon": "DB lab",
+        "Mon": "CSI 2132 LAB",
         "Tue": "",
         "Wed": "",
-        "Thu": "Programming paradigms lec",
-        "Fri": "Professional practice dgd"
+        "Thu": "CSI 2120 LAB",
+        "Fri": "CSI 2911 DGD"
     },
     "16:00":{
-        "Mon": "DB dgd",
-        "Tue": "Programming paradigms lec",
+        "Mon": "CSI 2132 DGD",
+        "Tue": "CSI 2120 LEC",
         "Wed": "",
-        "Thu": "Programming paradigms dgd",
+        "Thu": "CSI 2120 LEC",
         "Fri": ""
     },
     "17:30":{
         "Mon": "",
-        "Tue": "Discrete structures lec",
+        "Tue": "CSI 2101 LEC",
         "Wed": "",
-        "Thu": "Discrete structures dgd?",
-        "Fri": "Discrete structures lec?"
+        "Thu": "CSI 2101 DGD?",
+        "Fri": "CSI 2101 LEC?"
     },
     "19:00":{
-        "Mon": "DB lec",
+        "Mon": "CSI 2132 LEC",
         "Tue": "",
         "Wed": "",
-        "Thu": "Professional practice lec",
+        "Thu": "CSI 2911 LEC",
         "Fri": ""
     },
     "20:30":{
-        "Mon": "DB lec",
+        "Mon": "CSI 2132 LEC",
         "Tue": "",
         "Wed": "",
-        "Thu": "Professional practice lec",
+        "Thu": "CSI 2911 LEC",
         "Fri": ""
     }
 }

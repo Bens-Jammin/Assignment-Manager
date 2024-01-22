@@ -1,6 +1,4 @@
 # https://coolors.co/palette/ef476f-f78c6b-ffd166-83d483-06d6a0-0cb0a9-118ab2-073b4c
-from ctypes import alignment
-
 
 RED = "#ff4444"
 ORANGE = "#F78C6B"
@@ -20,6 +18,7 @@ course_code_to_colour = {
     "MAT-2377": YELLOW,
 }
 
+
 def style_course_code( course_code: str) -> str:
     try:
         hex_colour = course_code_to_colour[course_code]
@@ -33,10 +32,10 @@ def style_grade( grade: str ) -> str:
     try:
         grade = int(grade)
 
-        hex_colour = "#ff4444"
-        if grade > 70: hex_colour = "#cc7a00"
-        if grade > 80: hex_colour = "#cccc00" 
-        if grade > 90: hex_colour = "#30a807"
+        hex_colour = RED
+        if grade > 70: hex_colour = ORANGE # "#cc7a00"
+        if grade > 80: hex_colour = YELLOW # "#cccc00" 
+        if grade > 90: hex_colour = GREEN  # "#30a807"
 
         return hex_colour
     
@@ -48,9 +47,9 @@ def style_grade( grade: str ) -> str:
 def style_priority( priority: str ) -> str:
     priority = priority.lower().strip()
 
-    if priority == "low": return LIGHT_BLUE
-    if priority == "medium": return GREEN
-    if priority == "high": return YELLOW
+    if priority == "low":      return LIGHT_BLUE
+    if priority == "medium":   return GREEN
+    if priority == "high":     return YELLOW
     if priority == "critical": return ORANGE
     
     return ""
@@ -59,9 +58,9 @@ def style_priority( priority: str ) -> str:
 def style_status( status: str ) -> str:
     status = status.lower()
     if status == "not started": return RED
-    if status == "started": return ORANGE
-    if status == "editing": return TURQUOISE
-    if status == "done": return GREEN
+    if status == "started":     return ORANGE
+    if status == "editing":     return TURQUOISE
+    if status == "done":        return GREEN
 
     return ""
 
