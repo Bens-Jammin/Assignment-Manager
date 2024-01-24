@@ -3,9 +3,8 @@ from colours import style_cell
 def convert_matrix_to_html_table( table: list[list[str]], class_name: str, headers: list[str], center_all=False ) -> str:
     
     html_table = "<table class='"+class_name+"' id='"+class_name+"'>"
-    html_table += generate_header_code( headers )
+    html_table += generate_html_header_tags( headers )
 
-    # rest of the data
     for row in table:
         
         # append all data from matrix to code
@@ -17,7 +16,8 @@ def convert_matrix_to_html_table( table: list[list[str]], class_name: str, heade
         for i, cell in enumerate(row):
 
             colour_styling = style_cell( i, cell, center_all )
-            
+
+            # selected_priority is in col 6 , selected_status is in col 5              
             selected_option = selected_priority if i == 6 else selected_status
 
             cell_contents = set_non_default_cell_contents( i, str(cell), selected_option )
@@ -36,7 +36,7 @@ def convert_matrix_to_html_table( table: list[list[str]], class_name: str, heade
     return html_table
 
 
-def generate_header_code( headers: list[str] ) -> str:
+def generate_html_header_tags( headers: list[str] ) -> str:
     header_code = "<tr>"
     for cell in headers:
         cell_starter = "<th style='text-align: center'>"
@@ -52,8 +52,8 @@ def set_non_default_cell_contents( index: int, cell: str, selected_option: str )
     """ generates non-text html content for a cell
 
     Args:
-        index           (int): column index of the cell
-        cell            (str): content of the cell
+        index (int): column index of the cell
+        cell (str): content of the cell
         selected_option (str): default dropdown option
 
     Returns:
@@ -101,29 +101,28 @@ def generate_dropdown(options: list[str], name: str, id: str, selected_option: s
 
 def generate_time_table(data: list[str]) -> str:
     html_table = "<table class='time-table' id='time-table'>"
-    html_table += generate_header_code(["Times","Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])
+    html_table += generate_html_header_tags(["Times","Monday", "Tuesday", "Wednesday", "Thursday", "Friday"])
 
-    cols = 6  # Updated to 6 columns
-    rows = len(data) // 6  # Assuming 6 columns
+    cols = 6  # Assume there are 6 columns (5 week days + time block column)
+    rows = len(data) // cols  
 
     times = ["8:30", "10:00", "11:30", "13:00", "14:30", "16:00", "17:30", "19:00", "20:30"]
 
     for i in range(rows):
         html_table += "<tr>"
         for j in range(cols):
-            if j != 0:
-                info = data[i * 5 + j-1]
+            
+            if j == 0:  # j = 0 means to generate time block column
+                cell_data = times[i]
             else:
-                info = times[i]
-            cell = "<td style='text-align: center'>" + info + "</td>"
+                cell_index = 5*i + (j-1)
+                cell_data = data[ cell_index ]
+            
+            cell = "<td style='text-align: center'>" + cell_data + "</td>"
             html_table += cell
+            
         html_table += "</tr>"
 
     html_table += "</table>"
 
     return html_table
-
-
-
-def format_schedule_cell( time_block: str) -> str:
-    return ""

@@ -42,7 +42,7 @@ def create_todo_list_matrix( data: list[list[str]] ) -> list[list[str]]:
         assignment_name = row[1]
         status = row[-2].lower()
         
-        day_of_the_week = date.weekday() # convert to string somehow    
+        day_of_the_week = date.strftime("%a") # convert to string somehow    
         date_without_time = day_of_the_week+" - "+day+"/"+month+"/"+year
 
 

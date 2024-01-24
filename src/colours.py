@@ -1,5 +1,3 @@
-# https://coolors.co/palette/ef476f-f78c6b-ffd166-83d483-06d6a0-0cb0a9-118ab2-073b4c
-
 RED = "#e07070"
 ORANGE = "#F78C6B"
 YELLOW = "#FFD166"
@@ -79,6 +77,6 @@ def style_cell( index: int, cell: str, is_centred: bool ) -> str:
     alignment = "'text-align: center'"
 
     if colour == "" and not is_centred: return ""
-    if is_centred and colour == "": return " style="+alignment
+    if is_centred and colour == "":     return " style="+alignment
     if colour != "" and not is_centred: return " style=background-color:"+colour
     return " style=background-color:"+colour+ "; "+alignment
