@@ -12,12 +12,15 @@ def convert_matrix_to_html_table( table: list[list[str]], class_name: str, heade
         html_table += "<tr>"
         
         selected_priority = row[-1]
+        selected_status = row[-2]
         
         for i, cell in enumerate(row):
 
             colour_styling = style_cell( i, cell, center_all )
+            
+            selected_option = selected_priority if i == 6 else selected_status
 
-            cell_contents = set_non_default_cell_contents( i, str(cell), selected_priority )
+            cell_contents = set_non_default_cell_contents( i, str(cell), selected_option )
 
             cell_starter = "<td"+ colour_styling +">"
             cell_ender = "</td>"
@@ -45,7 +48,17 @@ def generate_header_code( headers: list[str] ) -> str:
     return header_code
 
 
-def set_non_default_cell_contents( index: int, cell: str, selected_option ) -> str:
+def set_non_default_cell_contents( index: int, cell: str, selected_option: str ) -> str:
+    """ generates non-text html content for a cell
+
+    Args:
+        index           (int): column index of the cell
+        cell            (str): content of the cell
+        selected_option (str): default dropdown option
+
+    Returns:
+        formatted cell content to be rendered in the table
+    """
     cell_contents = ""
     
     if index == 4:    # grade
@@ -54,7 +67,7 @@ def set_non_default_cell_contents( index: int, cell: str, selected_option ) -> s
         options = [ "Not Started", "Partially Started", "Mostly Done", "Editing", "Complete" ]
         name = "status"
         dropdown_id = "status-dropdown"
-        cell_contents = generate_dropdown( options, name, dropdown_id, selected_option="" )
+        cell_contents = generate_dropdown( options, name, dropdown_id, selected_option )
     elif index == 6:    # priority col index
         options = [ "None", "Low", "Medium", "High", "Critical" ]
         name = "priority"

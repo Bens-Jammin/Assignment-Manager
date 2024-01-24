@@ -7,11 +7,8 @@ def convert_csv_to_matrix(file_path: str) -> list[list[str]]:
     with open(file_path, 'r') as file:
         line_count = sum(1 for line in file)
 
-    
-    # initialize matrix with room for headers and all the data 
     task_data = [ [] for i in range(line_count) ]
 
-    # task_data[0] = headers
 
     with open(file_path, 'r') as file:
         reader = csv.reader(file)
@@ -33,8 +30,8 @@ def convert_json_to_timetable(file_path: str) -> list[str]:
     times = list(data.keys())
     days = list(data[times[0]].keys())
     
-    for i, time in enumerate(times):
-        for j, day in enumerate(days):
+    for time in times:
+        for day in days:
             schedule.append(data[time][day])
         
     return schedule
@@ -42,4 +39,4 @@ def convert_json_to_timetable(file_path: str) -> list[str]:
 
 
 def save_to_csv( file_path: str, data: list[list[str]] ) -> None:
-    print("NOT IMPLEMENTED YET!!!!!!!!")
+    raise Exception("Funciton not implemented. Please contact benemiller994@gmail.com")

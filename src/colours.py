@@ -1,6 +1,6 @@
 # https://coolors.co/palette/ef476f-f78c6b-ffd166-83d483-06d6a0-0cb0a9-118ab2-073b4c
 
-RED = "#ff4444"
+RED = "#e07070"
 ORANGE = "#F78C6B"
 YELLOW = "#FFD166"
 GREEN = "#83D483"

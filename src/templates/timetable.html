@@ -10,10 +10,10 @@
 <body>
 
     <div class="topnav">
-        <a href="{{ url_for('assignments') }}">Assignment Info</a>
-        <a class="active" href="#Schedule">Class Schedule</a>
-        <a href="#contact">Contact</a>
-        <a href="#about">About</a>
+        <a  href="{{ url_for('assignments') }}">Assignment Info</a>
+        <a class='active' href="{{ url_for('timetable') }}">Class Schedule</a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('settings')  }}">Settings</a>
     </div> 
 
     <div class=timetable>

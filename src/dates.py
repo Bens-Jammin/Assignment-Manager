@@ -4,8 +4,8 @@ from datetime import datetime, timedelta
 def days_until(target_date: datetime) -> int:
 
     current_date = datetime.now()
-
     days_difference = (target_date - current_date).days
+    
     return days_difference
 
 
