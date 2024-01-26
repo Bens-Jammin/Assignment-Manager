@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>Assignment Tracker</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+    <!-- Import the functions you need from the SDKs you need -->
     <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js"></script>
+
 </head>
 <body>
     <div class="topnav">
@@ -15,8 +18,8 @@
         <a href="{{ url_for('settings') }}">Settings</a>
     </div>
 
-
     <div class="tables-container">
+
         <div class="assignment-table-container">
             <div class="save-button">
                 <button type="submit" id="save-button">Save</button>
@@ -35,10 +38,69 @@
                 {{ todo_table | safe }}
             </div>
         </div>
+
     </div>
 
+
     <!-- script for the save button -->
-    <script>
+    <script type="module">
+        // this doesnt let the button be pressed ?
+        import { initializeApp } from "firebase/app";
+        import { getDatabase, ref, set } from "firebase/database";
+
+        let saveButton = document.getElementById("save-button").addEventListener('click', function(){
+
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+                apiKey: "AIzaSyD-tYJw0jCDgIYK9jwbjBfguGXj8NY7hNY",
+                authDomain: "assignment-tracker-3cf0e.firebaseapp.com",
+                databaseURL: "https://assignment-tracker-3cf0e-default-rtdb.firebaseio.com",
+                projectId: "assignment-tracker-3cf0e",
+                storageBucket: "assignment-tracker-3cf0e.appspot.com",
+                messagingSenderId: "703233757167",
+                appId: "1:703233757167:web:18847f84c11ac68be0701a",
+                measurementId: "G-FMTBZQZR64"
+            };
+            const app = initializeApp(firebaseConfig);
+            const db = getDatabase(app);
+
+            let table = document.getElementById("assignment-table");
+            for (let i = 0, row; row = table.rows[i]; i++) {
+                
+                let courseCode = row.cells[0].innerText;
+                let assignmentName = row.cells[1].innerText;
+                let dueDate = row.cells[2].innerText;
+                let weight = row.cells[3].innerText;
+                let grade = row.cells[4].innerText;
+
+                let status_dropdown = document.getElementById("status-dropdown");
+                let priority_dropdown = document.getElementById("priority-dropdown");
+
+                let status = status_dropdown.options[status_dropdown.selectedIndex].value;
+                let priority = priority_dropdown.options[priority_dropdown.selectedIndex].value;
+            
+                let id = courseCode+"_"+assignmentName;
+                
+                let dataPath = '/assignments/'+id;
+
+                let dataReference = ref(db, dataPath);
+                set(dataReference, {
+                    ID : id,
+                    Course : courseCode,
+                    Name : assignmentName,
+                    DueDate : dueDate,
+                    Weight : weight,
+                    Grade : grade,
+                    Status : status,
+                    priority : priority 
+                }).then(() => {
+                    console.log("Data saved successfully.");
+                    alert("Data saved successfully!");
+                }).catch((error) => {
+                    console.error("Error saving data: ", error);
+                });
+            }
+        });
     </script>
 	
 </body>
