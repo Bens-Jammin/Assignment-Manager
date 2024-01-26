@@ -1,9 +1,15 @@
 from flask import Flask, render_template, jsonify, request
+from firebase import firebase
+
 import data_manager as dm
 import html_generator as html
 import table_generator as tgen
 
 app = Flask(__name__)
+
+
+FIREBASEIO_URL = "https://console.firebase.google.com/project/assignment-tracker-3cf0e/database/assignment-tracker-3cf0e-default-rtdb/data/~2F"
+db = firebase.FirebaseApplication( FIREBASEIO_URL, None )
 
 
 @app.route('/save', methods=['POST'])
@@ -18,12 +24,15 @@ def save():
 @app.route('/')
 def assignments():
     
+    # table = firebase.get('/assignments', None)
+    
     save()
 
     table = dm.convert_csv_to_matrix("data\Ben\Winter 2024\Ben.csv")
 
     assignments_headers = ["COURSE","NAME","DUE DATE","WEIGHT","GRADE","STATUS","PRIORITY"]
-    html_table = html.convert_matrix_to_html_table( table, 'assignment-table', assignments_headers )
+    filtered_table = tgen.filter_matrix_by_status( table, "Complete" )
+    html_table = html.convert_matrix_to_html_table( filtered_table, 'assignment-table', assignments_headers )
     
     grade_table = tgen.create_course_grade_matrix( table )
     grade_headers = ["COURSE", "GRADE"]

@@ -12,10 +12,21 @@ def create_course_grade_matrix( data: list[list[str]] ) -> list[list[str]]:
     grade_matrix = [ [course, 0] for course in sorted( course_codes ) ]
 
     for course_code in grade_matrix:
+        
+        grades_earned = 0
+        weighted_grades = 0 
         # sum all grades
         for row in data:
-            if row[0] == course_code:   
-                course_code[1] += int( row[4] ) / int( row[3] ) # weighted grade = grade/weight
+            if row[0] == course_code:
+                grades_earned = int( row[4] )
+                weighted_grades = int( row[3] )   
+
+        # no grades earned so far
+        if weighted_grades == 0:
+            course_code[1] = 0
+        else:
+            weighted_grade = grades_earned / weighted_grades
+            course_code[1] = weighted_grade
         
     for course in grade_matrix:
         course[1] = str( course[1] ) + "%"    
@@ -79,3 +90,19 @@ def sort_matrix_by_date( matrix: list[list[str]] ) -> list[list[str]]:
     sorted_matrix = sorted( matrix[1:], key=date_key )
 
     return sorted_matrix
+
+
+def filter_matrix_by_status( matrix: list[list[str]], blacklisted_status: str ) -> list[list[str]]:
+    
+    filtered_matrix = []
+    
+    for assignment in matrix:
+        assignment_status = assignment[5]
+        
+        if assignment_status.lower() == blacklisted_status.lower():
+            continue
+        
+        filtered_matrix.append( assignment )
+        
+    
+    return filtered_matrix

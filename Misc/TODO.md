@@ -16,4 +16,4 @@
 - [x] load status dropdown the same as priority
 - [ ] Add/view/edit/delete files for notes
 - [ ] add auto refresh on save click
-- [ ] use db (firebase ?) to save/load data
+- [ ] use db (firebase ?) to save/load data **

@@ -1,25 +1,25 @@
 <!doctype html>
-
 <html lang="en">
 <head>
-    <meta charset='UTF-8'/>
+    <meta charset="UTF-8">
     <title>Assignment Tracker</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-database.js"></script>
 </head>
-
 <body>
     <div class="topnav">
-        <a class='active' href="{{ url_for('assignments') }}">Assignment Info</a>
+        <a class="active" href="{{ url_for('assignments') }}">Assignment Info</a>
         <a href="{{ url_for('timetable') }}">Class Schedule</a>
         <a href="{{ url_for('about') }}">About</a>
-        <a href="{{ url_for('settings')  }}">Settings</a>
-    </div> 
+        <a href="{{ url_for('settings') }}">Settings</a>
+    </div>
 
 
     <div class="tables-container">
-        <div class='assignment-table-container'>
-            <div class='save-button' >
-                <button type="submit" id="saveButton">Save</button>
+        <div class="assignment-table-container">
+            <div class="save-button">
+                <button type="submit" id="save-button">Save</button>
             </div>
             {{ assignments_table | safe }}
         </div>
@@ -28,7 +28,7 @@
             <div class="grade-table-container">
                 <p style="align-self: center; font-weight: bold;"> GRADES </p>
                 {{ grade_table | safe }}
-            </div>    
+            </div>
 
             <div class="todo-table-container">
                 <p style="align-self: center; font-weight: bold;"> TODO </p>
@@ -38,62 +38,8 @@
     </div>
 
     <!-- script for the save button -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-		document.addEventListener('DOMContentLoaded', function() {
-			var saveButton = document.querySelector('.save-button');
-			
-			saveButton.addEventListener('click', function() {
-			  var table = document.querySelector('.assignment-table');
-			  var rows = table.querySelectorAll('tr');
-			  var csvContent = '';
-		  
-			  // Loop through the rows and construct csv content, skipping the header row
-			  Array.from(rows).forEach(function(row, index){
-				// Skip the header row (usually the first row with index 0)
-				if (index === 0) return;
-		  
-				var cols = row.querySelectorAll('td, th');
-				var rowData = [];
-				cols.forEach(function(col, colIndex) {
-				  // Check if the column contains a dropdown box (select element)
-				  var select = col.querySelector('select');
-				  if (select) {
-					// If it does, use the selected option's text
-					var selectedOption = select.options[select.selectedIndex].text;
-					rowData.push(selectedOption.trim());
-				  } else {
-					// Otherwise, use the text content of the cell
-					rowData.push(col.textContent.trim());
-				  }
-				});
-				csvContent += rowData.join(',') + '\n';
-			  });
-		  
-			  // Convert the CSV data to a JSON object
-			  var csvData = csvContent.split('\n').map(function(line) {
-				return line.split(',');
-			  });
-		  
-			  // Send the CSV data to the server
-			  fetch('/save', {
-				method: 'POST',
-				headers: {
-				   'Content-Type': 'application/json',
-				},
-				body: JSON.stringify({ csvData: csvData }),
-			   })			   
-			  .then(response => response.json())
-			  .then(data => console.log('Success:', data))
-			  .catch((error) => {
-				console.error('Error:', error);
-			  });
-			});
-		});		
-        </script>
-        
-    
-
+    </script>
+	
 </body>
-
 </html>

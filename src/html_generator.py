@@ -87,7 +87,7 @@ def generate_dropdown(options: list[str], name: str, id: str, selected_option: s
 
     for option in options:
         select += "<option value='" + option + "'"
-        if option == selected_option:
+        if option.lower() == selected_option.lower():
             select += " selected"
         select += ">" + option + "</option>"
     
