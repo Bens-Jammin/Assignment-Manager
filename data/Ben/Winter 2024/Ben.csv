@@ -21,14 +21,14 @@ CSI-2101,Quiz 7,28-03-2024,3.75,0,Not Started,Low
 CSI-2101,Quiz 8,04-04-2024,3.75,0,Not Started,Low
 CSI-2101,Midterm,29-02-2024,30,0,Not Started,High
 CSI-2101,Final,N/A,40,0,Not Started,Critical
-CSI-2120,Project pt. 1 (Java),N/A,5,0,Not Started,Low
-CSI-2120,Project pt. 2 (Scheme),N/A,5,0,Not Started,Low
-CSI-2120,Project pt. 3 (Go),N/A,5,0,Not Started,Low
-CSI-2120,Project pt. 4 (Prolog),N/A,5,0,Not Started,Low
+CSI-2120,Project pt. 1 (Java),16-02-2024,6,0,Not Started,Low
+CSI-2120,Project pt. 2 (Scheme),08-03-2024,6,0,Not Started,Low
+CSI-2120,Project pt. 3 (Go),10-04-2024,6,0,Not Started,Low
+CSI-2120,Project pt. 4 (Prolog),10-04-2024,6,0,Not Started,Low
 CSI-2120,Assignment 1 (Scheme),N/A,5,0,Not Started,Medium
 CSI-2120,Assignment 2 (Go),N/A,5,0,Not Started,Medium
-CSI-2120,Assignment 3 (Prolog),N/A,5,0,Not Started,Medium
-CSI-2120,Midterm,N/A,20,0,Not Started,High
+CSI-2120,Assignment 3 (Prolog),29-02-2024,16,0,Not Started,Medium
+CSI-2120,Midterm,N/A,16,0,Not Started,High
 CSI-2120,Final,N/A,35,0,Not Started,Critical
 CSI-2911,Case Study 1,25-01-2024,10,0,Complete,Medium
 CSI-2911,Case Study 2,15-02-2024,10,0,Not Started,Medium

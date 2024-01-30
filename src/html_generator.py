@@ -81,7 +81,7 @@ def set_non_default_cell_contents( index: int, cell: str, selected_option: str )
 
 
 def generate_dropdown(options: list[str], name: str, id: str, selected_option: str) -> str:
-    dropdown = "<form method='POST' class='dropdownbtn'>"
+    dropdown = "<div class='dropdown-wrapper' ><form method='POST' class='dropdownbtn'>"
     
     select = "<select name='" + name + "' id='" + id + "' style='background-color: transparent; border: none;'>"
 
@@ -93,7 +93,7 @@ def generate_dropdown(options: list[str], name: str, id: str, selected_option: s
     
     select += "</select>"
     dropdown += select
-    dropdown += "</form>"
+    dropdown += "</form></div>"
     
     return dropdown
 

@@ -18,6 +18,9 @@ _Last updated_: Jan 26  2024
 ### PYTHON
 - 
 
-### DATABASE 
+# JAVASCRIPT
+- 
+
+### DATABASE (FIREBASE)
 - [Read from DB with Flask](https://kellylougheed.medium.com/make-a-flask-app-with-a-nosql-database-using-firebase-612972ca3c4)
 - [Write to DB with js](https://firebase.google.com/docs/database/web/read-and-write)

@@ -1,5 +1,4 @@
 ## Format
-- [ ] Put python files into a sub directory
 - [ ] ~~Add class location to time table ( on a new line)~~
 - [X] make time table cells the same size
 
@@ -11,6 +10,7 @@
 
 ## Misc
 - [ ] Host online
+- [ ] Put python files into a sub directory
 
 ## Backend
 - [x] load status dropdown the same as priority
