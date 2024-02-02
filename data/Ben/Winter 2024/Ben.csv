@@ -11,8 +11,8 @@ MAT-2377,Assignment 2,11-02-2024,5,0,Not Started,Medium
 MAT-2377,Assignment 3,10-03-2024,5,0,Not Started,Medium
 MAT-2377,Assignment 4,31-03-2024,5,0,Not Started,Medium
 MAT-2377,Final,N/A,55,0,Not Started,Critical
-CSI-2101,Quiz 1,25-01-2024,3.75,0,Complete,Low
-CSI-2101,Quiz 2,01-02-2024,3.75,0,Not Started,Low
+CSI-2101,Quiz 1,25-01-2024,3.75,80,Complete,Low
+CSI-2101,Quiz 2,01-02-2024,3.75,0,Complete,Low
 CSI-2101,Quiz 3,08-02-2024,3.75,0,Not Started,Low
 CSI-2101,Quiz 4,15-02-2024,3.75,0,Not Started,Low
 CSI-2101,Quiz 5,14-03-2024,3.75,0,Not Started,Low
@@ -28,7 +28,7 @@ CSI-2120,Project pt. 4 (Prolog),10-04-2024,6,0,Not Started,Low
 CSI-2120,Assignment 1 (Scheme),N/A,5,0,Not Started,Medium
 CSI-2120,Assignment 2 (Go),N/A,5,0,Not Started,Medium
 CSI-2120,Assignment 3 (Prolog),29-02-2024,16,0,Not Started,Medium
-CSI-2120,Midterm,N/A,16,0,Not Started,High
+CSI-2120,Midterm,29-02-2024,16,0,Not Started,High
 CSI-2120,Final,N/A,35,0,Not Started,Critical
 CSI-2911,Case Study 1,25-01-2024,10,0,Complete,Medium
 CSI-2911,Case Study 2,15-02-2024,10,0,Not Started,Medium

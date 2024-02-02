@@ -17,15 +17,16 @@ def create_course_grade_matrix( data: list[list[str]] ) -> list[list[str]]:
         weighted_grades = 0 
         # sum all grades
         for row in data:
-            if row[0] == course_code:
-                grades_earned = int( row[4] )
-                weighted_grades = int( row[3] )   
-
+            if row[0] == course_code[0]:
+                grades_earned += int( row[4] )
+                weighted_grades += float( row[3] )
+ 
         # no grades earned so far
-        if weighted_grades == 0:
+        if grades_earned == 0:
             course_code[1] = 0
         else:
-            weighted_grade = grades_earned / weighted_grades
+            
+            weighted_grade = grades_earned / weighted_grades * 100
             course_code[1] = weighted_grade
         
     for course in grade_matrix:
